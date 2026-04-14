@@ -87,7 +87,7 @@ export const config = {
             title: "The Matrix (LateCode)",
             category: "Full Stack / EdTech / Gamified Learning",
             technologies: "React, Vite, Tailwind CSS, Node.js, Express.js, MongoDB, Pyodide (WASM), Monaco Editor",
-            image: "/images/placeholder.webp",
+            image: "/images/project-6.jpg",
             link: "https://github.com/Prateekiiitg56/The-Matrix.git",
             description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct — a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
         },
@@ -96,7 +96,7 @@ export const config = {
             title: "SmartScribe",
             category: "AI / Full Stack",
             technologies: "React, Vite, FastAPI, Python, SQLite, JWT, Google OAuth, OpenRouter API",
-            image: "/images/placeholder.webp",
+            image: "/images/project-7.jpg",
             link: "https://github.com/Prateekiiitg56/SmartScribe.git",
             description: "AI-powered essay evaluator that provides instant feedback on grammar, coherence, and argumentation strength. Features real Google OAuth sign-in, JWT authentication, a Monaco-style essay editor, and a user dashboard with evaluation history and stats."
         },
@@ -105,7 +105,7 @@ export const config = {
             title: "Sketch-to-Color GAN",
             category: "Deep Learning / Computer Vision",
             technologies: "Python, PyTorch, Torchvision, Pix2Pix (U-Net + PatchGAN), Albumentations, Jupyter Notebook",
-            image: "/images/placeholder.webp",
+            image: "/images/project-8.jpg",
             link: "https://github.com/Prateekiiitg56/Sketch-to-Coloured-Pair.git",
             description: "A conditional GAN (cGAN) that colorizes anime-style sketches using the Pix2Pix architecture. The U-Net generator maps black-and-white sketches to full-color images while a PatchGAN discriminator enforces fine-grained realism. Trained on the Anime Sketch Colorization Pair dataset."
         }
