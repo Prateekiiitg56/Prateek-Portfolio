@@ -16,11 +16,7 @@ interface LoadingType {
 export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  const [isLoading, setIsLoading] = useState(() => {
-    // Skip loading on mobile
-    if (window.innerWidth <= 768) return false;
-    return true;
-  });
+  const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(0);
 
   const value = {
@@ -28,20 +24,29 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setIsLoading,
     setLoading,
   };
+
   useEffect(() => {
-    // Auto-start animations on mobile since there's no 3D model
-    if (window.innerWidth <= 768) {
-      import("../components/utils/initialFX").then((module) => {
-        if (module.initialFX) {
-          setTimeout(() => {
-            module.initialFX();
-          }, 100);
-        }
-      });
-    }
+    // On mobile, the 3D scene never loads so setProgress is never called.
+    // Drive the progress bar ourselves so the loading animation plays.
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) return;
+
+    let pct = 0;
+    const interval = setInterval(() => {
+      pct += Math.round(Math.random() * 12 + 5);
+      if (pct >= 100) {
+        pct = 100;
+        setLoading(100);
+        clearInterval(interval);
+      } else {
+        setLoading(pct);
+      }
+    }, 80);
+
+    return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {}, [loading]);
+  useEffect(() => { }, [loading]);
 
   return (
     <LoadingContext.Provider value={value as LoadingType}>
