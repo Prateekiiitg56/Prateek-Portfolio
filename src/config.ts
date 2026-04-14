@@ -18,7 +18,7 @@ export const config = {
     },
     about: {
         title: "About Me",
-        description: "Hey 👋 I’m Prateek Singh — a curious developer who loves turning ideas into working products. From building web applications to exploring AI and system design, I’m always experimenting, learning, and improving. I believe in clean code, meaningful projects, and growing through real-world problem-solving."
+        description: "I'm Prateek Singh, a curious developer who loves turning ideas into working products. From building web applications to exploring AI and system design, I'm always experimenting, learning, and improving. I care about clean code, meaningful projects, and growing through real-world problem-solving."
     },
     experiences: [
         {
