@@ -1,4 +1,5 @@
 export const config = {
+    resumeUrl: "/PrateekResume.pdf",
     developer: {
         name: "Prateek",
         fullName: "Prateek Singh",
@@ -80,6 +81,33 @@ export const config = {
             image: "/images/project-5.webp",
             link: "https://github.com/Prateekiiitg56/CodeCapsule",
             description: "A secure environment for code storage and management, designed for handling sensitive snippets and rapid project documentation."
+        },
+        {
+            id: 6,
+            title: "The Matrix (LateCode)",
+            category: "Full Stack / EdTech / Gamified Learning",
+            technologies: "React, Vite, Tailwind CSS, Node.js, Express.js, MongoDB, Pyodide (WASM), Monaco Editor",
+            image: "/images/placeholder.webp",
+            link: "https://github.com/Prateekiiitg56/The-Matrix.git",
+            description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct — a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
+        },
+        {
+            id: 7,
+            title: "SmartScribe",
+            category: "AI / Full Stack",
+            technologies: "React, Vite, FastAPI, Python, SQLite, JWT, Google OAuth, OpenRouter API",
+            image: "/images/placeholder.webp",
+            link: "https://github.com/Prateekiiitg56/SmartScribe.git",
+            description: "AI-powered essay evaluator that provides instant feedback on grammar, coherence, and argumentation strength. Features real Google OAuth sign-in, JWT authentication, a Monaco-style essay editor, and a user dashboard with evaluation history and stats."
+        },
+        {
+            id: 8,
+            title: "Sketch-to-Color GAN",
+            category: "Deep Learning / Computer Vision",
+            technologies: "Python, PyTorch, Torchvision, Pix2Pix (U-Net + PatchGAN), Albumentations, Jupyter Notebook",
+            image: "/images/placeholder.webp",
+            link: "https://github.com/Prateekiiitg56/Sketch-to-Coloured-Pair.git",
+            description: "A conditional GAN (cGAN) that colorizes anime-style sketches using the Pix2Pix architecture. The U-Net generator maps black-and-white sketches to full-color images while a PatchGAN discriminator enforces fine-grained realism. Trained on the Anime Sketch Colorization Pair dataset."
         }
     ],
     contact: {

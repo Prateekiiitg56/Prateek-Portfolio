@@ -94,6 +94,15 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+        <a
+          href={config.resumeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="navbar-resume-btn"
+          data-cursor="disable"
+        >
+          Resume ↗
+        </a>
       </div>
 
       <div className="landing-circle1"></div>
