@@ -12,6 +12,7 @@
   top: 0;
   z-index: 9999;
 }
+
 .header ul {
   font-size: 11px;
   display: flex;
@@ -23,6 +24,7 @@
   row-gap: 6px;
   align-items: end;
 }
+
 .header ul li {
   margin-left: 0px;
   letter-spacing: 0.8px;
@@ -30,6 +32,7 @@
   font-weight: 600;
   cursor: pointer;
 }
+
 .navbar-connect {
   position: absolute;
   display: none;
@@ -40,43 +43,53 @@
   letter-spacing: 0.8px;
   font-weight: 500;
 }
+
 .navbar-title {
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.2px;
 }
+
 @media only screen and (min-width: 500px) {
   .header {
     padding: 20px 0px;
   }
+
   .header ul {
     flex-direction: row;
     align-items: center;
     font-size: 14px;
   }
+
   .header ul li {
     color: #eae5ec;
   }
+
   .navbar-title {
     font-size: 16px;
   }
 }
-@media only screen and (min-width: 900px) {
+
+@media only screen and (min-width: 1400px) {
   .navbar-connect {
     display: block;
   }
 }
+
 @media only screen and (min-width: 1200px) {
   .header {
     padding: 35px 0px;
   }
+
   .header ul {
     column-gap: 80px;
     font-size: 16px;
   }
+
   .navbar-connect {
     font-size: 16px;
   }
+
   .navbar-title {
     font-size: 18px;
   }
@@ -96,18 +109,21 @@
   white-space: nowrap;
   align-self: center;
 }
+
 .navbar-resume-btn:hover {
   background: rgba(234, 229, 236, 0.12);
   border-color: #eae5ec;
   box-shadow: 0 0 10px rgba(234, 229, 236, 0.2);
   color: #fff;
 }
+
 @media only screen and (min-width: 500px) {
   .navbar-resume-btn {
     font-size: 13px;
     padding: 7px 16px;
   }
 }
+
 @media only screen and (min-width: 1200px) {
   .navbar-resume-btn {
     font-size: 14px;
