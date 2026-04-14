@@ -23,12 +23,15 @@ const Loading = ({ percent }: { percent: number }) => {
     import("./utils/initialFX").then((module) => {
       if (isLoaded) {
         setClicked(true);
+        // On touch devices auto-advance immediately — no mouse click needed
+        const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        const delay = isTouchDevice ? 300 : 900;
         setTimeout(() => {
           if (module.initialFX) {
             module.initialFX();
           }
           setIsLoading(false);
-        }, 900);
+        }, delay);
       }
     });
   }, [isLoaded]);
@@ -38,6 +41,16 @@ const Loading = ({ percent }: { percent: number }) => {
     const rect = target.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    target.style.setProperty("--mouse-x", `${x}px`);
+    target.style.setProperty("--mouse-y", `${y}px`);
+  }
+
+  function handleTouch(e: React.TouchEvent<HTMLElement>) {
+    const { currentTarget: target } = e;
+    const rect = target.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
     target.style.setProperty("--mouse-x", `${x}px`);
     target.style.setProperty("--mouse-y", `${y}px`);
   }
@@ -69,6 +82,8 @@ const Loading = ({ percent }: { percent: number }) => {
         <div
           className={`loading-wrap ${clicked && "loading-clicked"}`}
           onMouseMove={(e) => handleMouseMove(e)}
+          onTouchStart={(e) => handleTouch(e)}
+          onTouchMove={(e) => handleTouch(e)}
         >
           <div className="loading-hover"></div>
           <div className={`loading-button ${loaded && "loading-complete"}`}>
