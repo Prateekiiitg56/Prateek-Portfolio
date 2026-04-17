@@ -106,7 +106,7 @@ export const config = {
             category: "Deep Learning / Computer Vision",
             technologies: "Python, PyTorch, Torchvision, Pix2Pix (U-Net + PatchGAN), Albumentations, Jupyter Notebook",
             image: "/images/project-8.jpg",
-            link: "https://github.com/Prateekiiitg56/Sketch-to-Coloured-Pair.git",
+            link: "https://github.com/Prateekiiitg56/SketchColured.git",
             description: "A conditional GAN (cGAN) that colorizes anime-style sketches using the Pix2Pix architecture. The U-Net generator maps black-and-white sketches to full-color images while a PatchGAN discriminator enforces fine-grained realism. Trained on the Anime Sketch Colorization Pair dataset."
         }
     ],
