@@ -31,6 +31,43 @@ const Career = () => {
                 <h3>{getDisplayYear(exp.period)}</h3>
               </div>
               <p>{exp.description}</p>
+              {(exp as any).referenceLetter && (
+                <a
+                  href={(exp as any).referenceLetter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="career-ref-link"
+                  data-cursor="disable"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    marginTop: "10px",
+                    color: "rgba(255, 255, 255, 0.85)",
+                    background: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    padding: "6px 14px",
+                    borderRadius: "20px",
+                    fontSize: "0.85rem",
+                    textDecoration: "none",
+                    fontWeight: "500",
+                    transition: "all 0.3s ease",
+                    cursor: "pointer"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.15)";
+                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
+                    e.currentTarget.style.color = "#ffffff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
+                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                    e.currentTarget.style.color = "rgba(255, 255, 255, 0.85)";
+                  }}
+                >
+                  View Reference Letter ↗
+                </a>
+              )}
             </div>
           ))}
         </div>

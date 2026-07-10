@@ -33,7 +33,8 @@ export const config = {
                 "Building scalable and reusable frontend components",
                 "Collaborating in public codebases via Git/GitHub"
             ],
-            technologies: ["Open Source", "Git/GitHub", "Auth", "Frontend"]
+            technologies: ["Open Source", "Git/GitHub", "Auth", "Frontend"],
+            referenceLetter: "/ReferenceLetter.pdf"
         }
     ],
     projects: [
@@ -108,6 +109,15 @@ export const config = {
             image: "/images/project-8.jpg",
             link: "https://github.com/Prateekiiitg56/SketchColured.git",
             description: "A conditional GAN (cGAN) that colorizes anime-style sketches using the Pix2Pix architecture. The U-Net generator maps black-and-white sketches to full-color images while a PatchGAN discriminator enforces fine-grained realism. Trained on the Anime Sketch Colorization Pair dataset."
+        },
+        {
+            id: 9,
+            title: "Automated Documentation & Tutorial Agent",
+            category: "AI / Automation",
+            technologies: "n8n, GitHub Webhooks, Groq AI, Node.js, Markdown",
+            image: "/images/9.avif",
+            link: "https://github.com/Prateekiiitg56/automated-documentation-agent",
+            description: "Automated agent that generates docs, blogs, and video scripts on every GitHub PR merge using n8n and Groq AI. (Merge your code, and a robot will write your docs, your blog post, and your video script for you - automatically, in seconds)"
         }
     ],
     contact: {
