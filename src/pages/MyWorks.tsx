@@ -27,7 +27,9 @@ const MyWorks = () => {
             data-cursor="disable"
             onClick={() => setSelectedProject(project)}
           >
-            <div className="myworks-card-number">0{index + 1}</div>
+            <div className="myworks-card-number">
+              {String(index + 1).padStart(2, "0")}
+            </div>
             <div className="myworks-card-image">
               <img src={project.image} alt={project.title} />
             </div>
