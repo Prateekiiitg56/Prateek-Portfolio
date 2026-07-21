@@ -118,6 +118,15 @@ export const config = {
             image: "/images/9.avif",
             link: "https://github.com/Prateekiiitg56/automated-documentation-agent",
             description: "Automated agent that generates docs, blogs, and video scripts on every GitHub PR merge using n8n and Groq AI. (Merge your code, and a robot will write your docs, your blog post, and your video script for you - automatically, in seconds)"
+        },
+        {
+            id: 10,
+            title: "Red Fizz 3D Interactive Brand Portfolio",
+            category: "3D Web / Interactive",
+            technologies: "React 18, Vite, React Router DOM, Three.js, React Three Fiber (R3F), @react-three/drei, Tailwind CSS, GSAP",
+            image: "/images/project-10.jpg",
+            link: "https://github.com/Prateekiiitg56/Red-Fizz",
+            description: "A premium, high-fidelity responsive web application showcasing carbonated beverages with real-time interactive WebGL elements. Features fullscreen 3D product inspectors, custom Can3D & Bottle3D models with cinematic rendering, dynamic texture remounting, glass material physics (transmission, IOR), and smooth scroll-reveal animations for an immersive brand experience."
         }
     ],
     contact: {
