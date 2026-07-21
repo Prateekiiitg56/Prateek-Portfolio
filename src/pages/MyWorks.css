@@ -58,6 +58,7 @@
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
+  cursor: pointer;
 }
 
 .myworks-card:hover {
@@ -126,17 +127,50 @@
   line-height: 1.5;
 }
 
-/* Responsive */
+/* Responsive Layout */
 @media only screen and (max-width: 768px) {
   .myworks-page {
-    padding: 60px 20px;
+    padding: 40px 16px 60px 16px;
+  }
+
+  .myworks-header {
+    margin-bottom: 35px;
+  }
+
+  .back-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
   }
 
   .myworks-header h1 {
-    font-size: 45px;
+    font-size: 38px;
+    margin-bottom: 10px;
+  }
+
+  .myworks-header p {
+    font-size: 15px;
   }
 
   .myworks-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .myworks-card-image {
+    height: 190px;
+  }
+
+  .myworks-card-info {
+    padding: 18px;
+  }
+
+  .myworks-card-info h3 {
+    font-size: 18px;
+  }
+
+  .myworks-card-description {
+    font-size: 13px;
   }
 }
+

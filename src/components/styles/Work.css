@@ -349,4 +349,13 @@
   .see-all-works p {
     font-size: 14px;
   }
+
+  .work-link {
+    opacity: 1;
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    bottom: 8px;
+    right: 8px;
+  }
 }

@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { config } from "../config";
+import ProjectModal from "../components/ProjectModal";
 import "./MyWorks.css";
 
 const MyWorks = () => {
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+
   return (
     <div className="myworks-page">
       <div className="myworks-header">
@@ -21,10 +25,7 @@ const MyWorks = () => {
             className="myworks-card"
             key={project.id}
             data-cursor="disable"
-            onClick={() => {
-              const link = (project as any).link as string | undefined;
-              if (link) window.open(link, "_blank", "noopener,noreferrer");
-            }}
+            onClick={() => setSelectedProject(project)}
           >
             <div className="myworks-card-number">0{index + 1}</div>
             <div className="myworks-card-image">
@@ -39,6 +40,11 @@ const MyWorks = () => {
           </div>
         ))}
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   );
 };

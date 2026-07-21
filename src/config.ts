@@ -49,12 +49,13 @@ export const config = {
         },
         {
             id: 2,
-            title: "AuraSpot",
-            category: "Full Stack / Real-time",
-            technologies: "React/Next.js, Firebase (Realtime DB & Auth), CSS Modules",
-            image: "/images/project-2.webp",
-            link: "https://github.com/Prateekiiitg56/auraspot",
-            description: "A real-time real estate platform for finding, buying, or selling hostels, PGs, and houses with localized discovery and seamless user interaction."
+            title: "Red Fizz 3D Interactive Brand Portfolio",
+            category: "3D Web / Interactive",
+            technologies: "React 18, Vite, React Router DOM, Three.js, React Three Fiber (R3F), @react-three/drei, Tailwind CSS, GSAP",
+            image: "/images/project-10.png",
+            link: "https://github.com/Prateekiiitg56/Red-Fizz",
+            deploy: "https://red-fizz.vercel.app",
+            description: "A premium, high-fidelity responsive web application showcasing carbonated beverages with real-time interactive WebGL elements. Features fullscreen 3D product inspectors, custom Can3D & Bottle3D models with cinematic rendering, dynamic texture remounting, glass material physics (transmission, IOR), and smooth scroll-reveal animations for an immersive brand experience."
         },
         {
             id: 3,
@@ -90,6 +91,7 @@ export const config = {
             technologies: "React, Vite, Tailwind CSS, Node.js, Express.js, MongoDB, Pyodide (WASM), Monaco Editor",
             image: "/images/project-6.jpg",
             link: "https://github.com/Prateekiiitg56/The-Matrix.git",
+            deploy: "https://the-matrix-rho.vercel.app/",
             description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct — a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
         },
         {
@@ -99,6 +101,7 @@ export const config = {
             technologies: "React, Vite, FastAPI, Python, SQLite, JWT, Google OAuth, OpenRouter API",
             image: "/images/project-7.jpg",
             link: "https://github.com/Prateekiiitg56/SmartScribe.git",
+            deploy: "https://smartscribe-ai.vercel.app",
             description: "AI-powered essay evaluator that provides instant feedback on grammar, coherence, and argumentation strength. Features real Google OAuth sign-in, JWT authentication, a Monaco-style essay editor, and a user dashboard with evaluation history and stats."
         },
         {
@@ -121,12 +124,13 @@ export const config = {
         },
         {
             id: 10,
-            title: "Red Fizz 3D Interactive Brand Portfolio",
-            category: "3D Web / Interactive",
-            technologies: "React 18, Vite, React Router DOM, Three.js, React Three Fiber (R3F), @react-three/drei, Tailwind CSS, GSAP",
-            image: "/images/project-10.jpg",
-            link: "https://github.com/Prateekiiitg56/Red-Fizz",
-            description: "A premium, high-fidelity responsive web application showcasing carbonated beverages with real-time interactive WebGL elements. Features fullscreen 3D product inspectors, custom Can3D & Bottle3D models with cinematic rendering, dynamic texture remounting, glass material physics (transmission, IOR), and smooth scroll-reveal animations for an immersive brand experience."
+            title: "AuraSpot",
+            category: "Full Stack / Real-time",
+            technologies: "React/Next.js, Firebase (Realtime DB & Auth), CSS Modules",
+            image: "/images/project-2.webp",
+            link: "https://github.com/Prateekiiitg56/auraspot",
+            deploy: "https://auraspotfrontend.vercel.app/",
+            description: "A real-time real estate platform for finding, buying, or selling hostels, PGs, and houses with localized discovery and seamless user interaction."
         }
     ],
     contact: {

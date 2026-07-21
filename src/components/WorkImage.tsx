@@ -13,32 +13,42 @@ const WorkImage = (props: Props) => {
   const [video, setVideo] = useState("");
   const handleMouseEnter = async () => {
     if (props.video) {
-      setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
+      try {
+        setIsVideo(true);
+        const videoPath = props.video.startsWith("/") ? props.video : `/${props.video}`;
+        const response = await fetch(videoPath);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        setVideo(blobUrl);
+      } catch (err) {
+        console.error("Failed to load video asset", err);
+      }
     }
   };
 
   return (
     <div className="work-image">
-      <a
+      <div
         className="work-image-in"
-        href={props.link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setIsVideo(false)}
-        target="_blank"
         data-cursor={"disable"}
       >
         {props.link && (
-          <div className="work-link">
+          <a
+            className="work-link"
+            href={props.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            title="Open Repository"
+          >
             <MdArrowOutward />
-          </div>
+          </a>
         )}
         <img src={props.image} alt={props.alt} />
-        {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
-      </a>
+        {isVideo && video && <video src={video} autoPlay muted playsInline loop></video>}
+      </div>
     </div>
   );
 };
