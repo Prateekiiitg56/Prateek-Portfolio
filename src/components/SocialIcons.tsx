@@ -85,7 +85,7 @@ const SocialIcons = () => {
           </span>
         )}
       </div>
-      <a className="resume-button" href="#">
+      <a className="resume-button" href={config.resumeUrl} target="_blank" rel="noopener noreferrer">
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />
