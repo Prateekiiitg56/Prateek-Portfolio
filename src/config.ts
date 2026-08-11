@@ -35,17 +35,32 @@ export const config = {
             ],
             technologies: ["Open Source", "Git/GitHub", "Auth", "Frontend"],
             referenceLetter: "/ReferenceLetter.pdf"
+        },
+        {
+            position: "Artificial Intelligence Intern",
+            company: "CodSoft",
+            period: "Jul 2026 - Aug 2026",
+            location: "Virtual",
+            description: "Successfully completed a 4-week virtual internship in Artificial Intelligence, building machine learning models, computer vision algorithms, and intelligent automation pipelines.",
+            responsibilities: [
+                "Developed and evaluated AI/ML models and algorithms",
+                "Executed intelligent automation workflows and scripting",
+                "Delivered project milestones with strong analytical problem-solving"
+            ],
+            technologies: ["Artificial Intelligence", "Python", "Machine Learning", "NLP"],
+            referenceLetter: "/codsoft.pdf"
         }
     ],
     projects: [
         {
             id: 1,
-            title: "BizInsight AI",
-            category: "AI / Analytics",
-            technologies: "Python, Streamlit, NLP, Pandas, Matplotlib/Plotly",
-            image: "/images/project-1.webp",
-            link: "https://github.com/Prateekiiitg56/BizInsight-AI",
-            description: "An AI-powered customer feedback analytics platform for business intelligence. Performs sentiment analysis, identifies key issues, and generates automated improvement suggestions."
+            title: "Lead-Scrapper — Enterprise B2B Lead Generation & Outreach CRM",
+            category: "B2B Automation / CRM",
+            technologies: "React 19, Vite, TypeScript, Supabase, Tailwind CSS v4, n8n, Gemini AI",
+            image: "/images/project11.png",
+            link: "https://github.com/Prateekiiitg56/Lead-Scrapper",
+            deploy: "https://lead-scrapper-mu.vercel.app/",
+            description: "A modern B2B sales automation platform for lead discovery via Google Places, contact scraping, multi-channel outreach (WhatsApp, Email, LinkedIn), real-time 8-stage CRM pipeline, live inbox with AI sentiment classification, and dynamic performance analytics."
         },
         {
             id: 2,
@@ -59,33 +74,16 @@ export const config = {
         },
         {
             id: 3,
-            title: "StudyBuddy Chrome Extension",
-            category: "Browser Extension",
-            technologies: "JavaScript, Chrome Extension API (v3), HTML, CSS",
-            image: "/images/project-3.webp",
-            link: "https://github.com/Prateekiiitg56/StudyBuddy-Chrome-Extension",
-            description: "A productivity side-panel extension that provides AI-driven educational assistance and answers student queries in real-time."
+            title: "UNBIAS.XAI — Instagram Content Generator & Reel Analyzer",
+            category: "AI / Social Media Automation",
+            technologies: "JavaScript, Node.js, n8n, Apify Scraper, Google Gemini AI, Vercel",
+            image: "/images/project12.png",
+            link: "https://github.com/Prateekiiitg56/IG-SCRAPPER",
+            deploy: "https://ig-scrapper-chi.vercel.app/",
+            description: "An automated content strategy platform for Instagram reels. Leverages web scraping, competitor reel analysis, and generative AI to synthesize performance patterns and generate ready-to-use video scripts, captions, and targeted hashtag sets."
         },
         {
             id: 4,
-            title: "Music Prediction Model",
-            category: "Machine Learning",
-            technologies: "Python, Pandas, Scikit-Learn, Matplotlib",
-            image: "/images/project-4.webp",
-            link: "https://github.com/Prateekiiitg56/Music-Prediction-using-ML.git",
-            description: "A machine learning pipeline that analyzes listener data to predict music preferences and genres, with reporting and visualization."
-        },
-        {
-            id: 5,
-            title: "CodeCapsule",
-            category: "Full Stack",
-            technologies: "React, Node.js, Local Storage/IndexedDB",
-            image: "/images/project-5.webp",
-            link: "https://github.com/Prateekiiitg56/CodeCapsule",
-            description: "A secure environment for code storage and management, designed for handling sensitive snippets and rapid project documentation."
-        },
-        {
-            id: 6,
             title: "The Matrix (LateCode)",
             category: "Full Stack / EdTech / Gamified Learning",
             technologies: "React, Vite, Tailwind CSS, Node.js, Express.js, MongoDB, Pyodide (WASM), Monaco Editor",
@@ -95,17 +93,52 @@ export const config = {
             description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct — a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
         },
         {
-            id: 7,
+            id: 5,
+            title: "BizInsight AI",
+            category: "AI / Analytics",
+            technologies: "Python, Streamlit, NLP, Pandas, Matplotlib/Plotly",
+            image: "/images/project-1.webp",
+            link: "https://github.com/Prateekiiitg56/BizInsight-AI",
+            description: "An AI-powered customer feedback analytics platform for business intelligence. Performs sentiment analysis, identifies key issues, and generates automated improvement suggestions."
+        },
+        {
+            id: 6,
             title: "SmartScribe",
             category: "AI / Full Stack",
             technologies: "React, Vite, FastAPI, Python, SQLite, JWT, Google OAuth, OpenRouter API",
             image: "/images/project-7.jpg",
             link: "https://github.com/Prateekiiitg56/SmartScribe.git",
-            deploy: "https://smartscribe-ai.vercel.app",
             description: "AI-powered essay evaluator that provides instant feedback on grammar, coherence, and argumentation strength. Features real Google OAuth sign-in, JWT authentication, a Monaco-style essay editor, and a user dashboard with evaluation history and stats."
         },
         {
+            id: 7,
+            title: "StudyBuddy Chrome Extension",
+            category: "Browser Extension",
+            technologies: "JavaScript, Chrome Extension API (v3), HTML, CSS",
+            image: "/images/project-3.webp",
+            link: "https://github.com/Prateekiiitg56/StudyBuddy-Chrome-Extension",
+            description: "A productivity side-panel extension that provides AI-driven educational assistance and answers student queries in real-time."
+        },
+        {
             id: 8,
+            title: "Music Prediction Model",
+            category: "Machine Learning",
+            technologies: "Python, Pandas, Scikit-Learn, Matplotlib",
+            image: "/images/project-4.webp",
+            link: "https://github.com/Prateekiiitg56/Music-Prediction-using-ML.git",
+            description: "A machine learning pipeline that analyzes listener data to predict music preferences and genres, with reporting and visualization."
+        },
+        {
+            id: 9,
+            title: "CodeCapsule",
+            category: "Full Stack",
+            technologies: "React, Node.js, Local Storage/IndexedDB",
+            image: "/images/project-5.webp",
+            link: "https://github.com/Prateekiiitg56/CodeCapsule",
+            description: "A secure environment for code storage and management, designed for handling sensitive snippets and rapid project documentation."
+        },
+        {
+            id: 10,
             title: "Sketch-to-Color GAN",
             category: "Deep Learning / Computer Vision",
             technologies: "Python, PyTorch, Torchvision, Pix2Pix (U-Net + PatchGAN), Albumentations, Jupyter Notebook",
@@ -114,7 +147,7 @@ export const config = {
             description: "A conditional GAN (cGAN) that colorizes anime-style sketches using the Pix2Pix architecture. The U-Net generator maps black-and-white sketches to full-color images while a PatchGAN discriminator enforces fine-grained realism. Trained on the Anime Sketch Colorization Pair dataset."
         },
         {
-            id: 9,
+            id: 11,
             title: "Automated Documentation & Tutorial Agent",
             category: "AI / Automation",
             technologies: "n8n, GitHub Webhooks, Groq AI, Node.js, Markdown",
@@ -123,7 +156,7 @@ export const config = {
             description: "Automated agent that generates docs, blogs, and video scripts on every GitHub PR merge using n8n and Groq AI. (Merge your code, and a robot will write your docs, your blog post, and your video script for you - automatically, in seconds)"
         },
         {
-            id: 10,
+            id: 12,
             title: "AuraSpot",
             category: "Full Stack / Real-time",
             technologies: "React/Next.js, Firebase (Realtime DB & Auth), CSS Modules",
@@ -131,6 +164,36 @@ export const config = {
             link: "https://github.com/Prateekiiitg56/auraspot",
             deploy: "https://auraspotfrontend.vercel.app/",
             description: "A real-time real estate platform for finding, buying, or selling hostels, PGs, and houses with localized discovery and seamless user interaction."
+        },
+        {
+            id: 13,
+            title: "CondBot — Rule-Based Conversational Chatbot",
+            category: "AI / Chatbot",
+            technologies: "Python, Regular Expressions, HTML5, CSS3, JavaScript",
+            image: "/images/project13.jpg",
+            link: "https://github.com/Prateekiiitg56/CondBot",
+            deploy: "https://cond-bot.vercel.app/",
+            description: "A rule-based conversational chatbot that processes user text through regular expression matching and conditional logic. Recognizes intents like greetings, name introduction, date/time queries, jokes, and farewells with scripted responses. Includes both terminal interface and web GUI."
+        },
+        {
+            id: 14,
+            title: "CaptionAI — Image Captioning Platform",
+            category: "Deep Learning / Computer Vision",
+            technologies: "Python, PyTorch, ResNet50, LSTM, React, Vercel",
+            image: "/images/project14.avif",
+            link: "https://github.com/Prateekiiitg56/CaptionAI",
+            deploy: "https://caption-ai-kappa-taupe.vercel.app/",
+            description: "A full-stack web application that automatically generates natural-language captions for images. Combines a pre-trained CNN feature extractor (ResNet50 / VGG16) with an attention-based LSTM decoder and an image-aware analysis engine inferring scene type, lighting, and color."
+        },
+        {
+            id: 15,
+            title: "Matinee — Hybrid Movie Recommendation System",
+            category: "Web App / Recommender Engine",
+            technologies: "Vanilla JavaScript, HTML5, CSS3, Vite, TMDB API",
+            image: "/images/project15.jpg",
+            link: "https://github.com/Prateekiiitg56/Matinee",
+            deploy: "https://matinee-peach.vercel.app/",
+            description: "A self-contained, hybrid movie recommendation system built with modern vanilla JavaScript, CSS, and Vite. Dynamically fetches real-time cinema catalogs from TMDB, runs math-based recommender engines in your browser, and explains why it recommends each film."
         }
     ],
     contact: {
