@@ -54,7 +54,7 @@ export const config = {
     projects: [
         {
             id: 1,
-            title: "Lead-Scrapper — Enterprise B2B Lead Generation & Outreach CRM",
+            title: "Lead-Scrapper - Enterprise B2B Lead Generation & Outreach CRM",
             category: "B2B Automation / CRM",
             technologies: "React 19, Vite, TypeScript, Supabase, Tailwind CSS v4, n8n, Gemini AI",
             image: "/images/project11.png",
@@ -74,7 +74,7 @@ export const config = {
         },
         {
             id: 3,
-            title: "UNBIAS.XAI — Instagram Content Generator & Reel Analyzer",
+            title: "Unbias.xAI - Instagram Content Generator & Reel Analyzer",
             category: "AI / Social Media Automation",
             technologies: "JavaScript, Node.js, n8n, Apify Scraper, Google Gemini AI, Vercel",
             image: "/images/project12.png",
@@ -167,7 +167,7 @@ export const config = {
         },
         {
             id: 13,
-            title: "CondBot — Rule-Based Conversational Chatbot",
+            title: "CondBot - Rule-Based Conversational Chatbot",
             category: "AI / Chatbot",
             technologies: "Python, Regular Expressions, HTML5, CSS3, JavaScript",
             image: "/images/project13.jpg",
@@ -177,7 +177,7 @@ export const config = {
         },
         {
             id: 14,
-            title: "CaptionAI — Image Captioning Platform",
+            title: "CaptionAI - Image Captioning Platform",
             category: "Deep Learning / Computer Vision",
             technologies: "Python, PyTorch, ResNet50, LSTM, React, Vercel",
             image: "/images/project14.avif",
@@ -187,7 +187,7 @@ export const config = {
         },
         {
             id: 15,
-            title: "Matinee — Hybrid Movie Recommendation System",
+            title: "Matinee - Hybrid Movie Recommendation System",
             category: "Web App / Recommender Engine",
             technologies: "Vanilla JavaScript, HTML5, CSS3, Vite, TMDB API",
             image: "/images/project15.jpg",
