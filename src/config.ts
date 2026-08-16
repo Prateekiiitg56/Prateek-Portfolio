@@ -57,7 +57,7 @@ export const config = {
             title: "UiUxDesigner - Enterprise AI Design System Extraction & Prompt Synthesis",
             category: "AI / Design System / Code Synthesis",
             technologies: "Next.js 16, React 19, Tailwind CSS v4, Framer Motion, Playwright, Gemini Vision, Base64, FFmpeg, n8n, Vercel",
-            image: "/images/project16.png",
+            image: "/images/project16.jpg",
             link: "https://github.com/Prateekiiitg56/UiUxDesign",
             deploy: "https://ui-ux-design-steel.vercel.app/",
             description: "An enterprise-grade AI design system extraction and prompt synthesis frontend. Automatically extracts visual design tokens—including color palettes, typography scales, layout order, component states, spacing metrics, and micro-interactions—from URLs, screenshots, or videos via Playwright DOM inspection and Gemini Vision. Synthesizes production-ready prompts for Claude, Cursor, v0, and bolt.new with 3D theme prompting (Three.js/R3F) and n8n webhook integration."
