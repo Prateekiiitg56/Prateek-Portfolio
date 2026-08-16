@@ -53,7 +53,7 @@ Projects:
 3. Red Fizz — 3D Interactive Brand Portfolio with real-time WebGL elements, custom Can3D & Bottle3D models, glass material physics, and smooth scroll animations. Stack: React 18, Vite, Three.js, R3F, GSAP, Tailwind CSS. Live: https://red-fizz.vercel.app
 4. UNBIAS.XAI — Instagram Content Generator & Reel Analyzer leveraging scraping, competitor reel analysis, and AI script/caption/hashtag generation. Stack: JavaScript, Node.js, n8n, Apify, Google Gemini AI, Vercel. Live: https://ig-scrapper-chi.vercel.app/
 5. The Matrix (LateCode) — Dual-world gamified learning OS. Red Pill = DSA tracker with MongoDB problem sets, streaks, analytics. Blue Pill = Python curriculum with in-browser WASM execution via Pyodide, Monaco editor, XP rank system. Stack: React, Vite, Tailwind, Node.js, Express, MongoDB. Live: https://the-matrix-rho.vercel.app/
-6. BizInsight AI — AI-powered customer feedback analytics, sentiment analysis, NLP. Stack: Python, Streamlit, Pandas.
+6. BizInsight AI — AI-powered customer feedback analytics, sentiment analysis, NLP. Stack: Python, Streamlit, Pandas. Live: https://biz-insight-ai-eight.vercel.app/
 7. SmartScribe — AI essay evaluator with instant feedback on grammar, coherence, argumentation. Stack: React, Vite, FastAPI, SQLite, OpenRouter API.
 8. StudyBuddy Chrome Extension — AI-powered productivity side-panel for students. Stack: JavaScript, Chrome Extension API v3.
 9. Music Prediction Model — ML pipeline to predict music preferences. Stack: Python, Scikit-Learn, Pandas.

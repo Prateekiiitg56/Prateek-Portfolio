@@ -109,6 +109,7 @@ export const config = {
             technologies: "Python, Streamlit, NLP, Pandas, Matplotlib/Plotly",
             image: "/images/project-1.webp",
             link: "https://github.com/Prateekiiitg56/BizInsight-AI",
+            deploy: "https://biz-insight-ai-eight.vercel.app/",
             description: "An AI-powered customer feedback analytics platform for business intelligence. Performs sentiment analysis, identifies key issues, and generates automated improvement suggestions."
         },
         {
