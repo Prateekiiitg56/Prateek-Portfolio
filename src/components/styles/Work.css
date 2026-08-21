@@ -30,8 +30,6 @@
   margin-left: -80px;
   padding-right: 120px;
   position: relative;
-  /* Prevent decorative pseudo-element lines from inflating scrollWidth */
-  overflow: hidden;
 }
 
 .work-box {
