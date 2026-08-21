@@ -1,5 +1,5 @@
 export const config = {
-    resumeUrl: "/resume.pdf",
+    resumeUrl: "/Prateekre.pdf",
     developer: {
         name: "Prateek",
         fullName: "Prateek Singh",
