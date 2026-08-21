@@ -21,9 +21,17 @@ const Work = () => {
     if (window.innerWidth <= 768) return;
 
     function getTranslateX(): number {
-      const workFlex = document.querySelector(".work-flex") as HTMLElement;
-      if (!workFlex) return 0;
-      return Math.max(0, workFlex.scrollWidth - workFlex.clientWidth + 40);
+      // Sum the actual widths of .work-box children rather than relying on
+      // scrollWidth, which can be inflated by decorative pseudo-elements or
+      // overflow content inside the relatively-positioned flex container.
+      const boxes = document.querySelectorAll<HTMLElement>(".work-flex .work-box");
+      if (!boxes.length) return 0;
+      let totalChildWidth = 0;
+      boxes.forEach((box) => {
+        totalChildWidth += box.getBoundingClientRect().width;
+      });
+      const viewportWidth = window.innerWidth;
+      return Math.max(0, totalChildWidth - viewportWidth + 40);
     }
 
     let timeline = gsap.timeline({

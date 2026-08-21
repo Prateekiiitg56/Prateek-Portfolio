@@ -30,6 +30,8 @@
   margin-left: -80px;
   padding-right: 120px;
   position: relative;
+  /* Prevent decorative pseudo-element lines from inflating scrollWidth */
+  overflow: hidden;
 }
 
 .work-box {
@@ -48,10 +50,12 @@
   flex-direction: column-reverse;
 }
 
+/* Decorative full-bleed horizontal rules — capped to 100vw so they never
+   inflate .work-flex's scrollWidth and break the GSAP measurement. */
 .work-flex::before,
 .work-flex::after {
   content: "";
-  width: calc(50000vw);
+  width: 100vw;
   height: 1px;
   background-color: #363636;
   position: absolute;
