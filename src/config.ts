@@ -84,6 +84,16 @@ export const config = {
         },
         {
             id: 4,
+            title: "Apex Garage — F1 Engineering Portfolio",
+            category: "3D Web / F1 Engineering",
+            technologies: "React 18, Vite, Three.js, React Three Fiber (R3F), Drei, Tailwind CSS, GSAP",
+            image: "/images/project17.png",
+            link: "https://github.com/Prateekiiitg56/Apex",
+            deploy: "https://apex-chi-weld.vercel.app",
+            description: "A scroll-driven 3D WebGL experience exploring Formula 1 chassis engineering and hybrid power units with real-time interactive 3D inspection, dynamic telemetry visuals, and smooth camera animations."
+        },
+        {
+            id: 5,
             title: "Unbias.xAI - Instagram Content Generator & Reel Analyzer",
             category: "AI / Social Media Automation",
             technologies: "JavaScript, Node.js, n8n, Apify Scraper, Google Gemini AI, Vercel",
@@ -93,7 +103,7 @@ export const config = {
             description: "An automated content strategy platform for Instagram reels. Leverages web scraping, competitor reel analysis, and generative AI to synthesize performance patterns and generate ready-to-use video scripts, captions, and targeted hashtag sets."
         },
         {
-            id: 5,
+            id: 6,
             title: "The Matrix (LateCode)",
             category: "Full Stack / EdTech / Gamified Learning",
             technologies: "React, Vite, Tailwind CSS, Node.js, Express.js, MongoDB, Pyodide (WASM), Monaco Editor",
@@ -103,7 +113,7 @@ export const config = {
             description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct — a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
         },
         {
-            id: 6,
+            id: 7,
             title: "BizInsight AI",
             category: "AI / Analytics",
             technologies: "Python, Streamlit, NLP, Pandas, Matplotlib/Plotly",
@@ -113,7 +123,7 @@ export const config = {
             description: "An AI-powered customer feedback analytics platform for business intelligence. Performs sentiment analysis, identifies key issues, and generates automated improvement suggestions."
         },
         {
-            id: 7,
+            id: 8,
             title: "SmartScribe",
             category: "AI / Full Stack",
             technologies: "React, Vite, FastAPI, Python, SQLite, JWT, Google OAuth, OpenRouter API",
@@ -122,7 +132,7 @@ export const config = {
             description: "AI-powered essay evaluator that provides instant feedback on grammar, coherence, and argumentation strength. Features real Google OAuth sign-in, JWT authentication, a Monaco-style essay editor, and a user dashboard with evaluation history and stats."
         },
         {
-            id: 8,
+            id: 9,
             title: "StudyBuddy Chrome Extension",
             category: "Browser Extension",
             technologies: "JavaScript, Chrome Extension API (v3), HTML, CSS",
@@ -131,7 +141,7 @@ export const config = {
             description: "A productivity side-panel extension that provides AI-driven educational assistance and answers student queries in real-time."
         },
         {
-            id: 9,
+            id: 10,
             title: "Music Prediction Model",
             category: "Machine Learning",
             technologies: "Python, Pandas, Scikit-Learn, Matplotlib",
@@ -140,7 +150,7 @@ export const config = {
             description: "A machine learning pipeline that analyzes listener data to predict music preferences and genres, with reporting and visualization."
         },
         {
-            id: 10,
+            id: 11,
             title: "CodeCapsule",
             category: "Full Stack",
             technologies: "React, Node.js, Local Storage/IndexedDB",
@@ -149,7 +159,7 @@ export const config = {
             description: "A secure environment for code storage and management, designed for handling sensitive snippets and rapid project documentation."
         },
         {
-            id: 11,
+            id: 12,
             title: "Sketch-to-Color GAN",
             category: "Deep Learning / Computer Vision",
             technologies: "Python, PyTorch, Torchvision, Pix2Pix (U-Net + PatchGAN), Albumentations, Jupyter Notebook",
@@ -158,7 +168,7 @@ export const config = {
             description: "A conditional GAN (cGAN) that colorizes anime-style sketches using the Pix2Pix architecture. The U-Net generator maps black-and-white sketches to full-color images while a PatchGAN discriminator enforces fine-grained realism. Trained on the Anime Sketch Colorization Pair dataset."
         },
         {
-            id: 12,
+            id: 13,
             title: "Automated Documentation & Tutorial Agent",
             category: "AI / Automation",
             technologies: "n8n, GitHub Webhooks, Groq AI, Node.js, Markdown",
@@ -167,7 +177,7 @@ export const config = {
             description: "Automated agent that generates docs, blogs, and video scripts on every GitHub PR merge using n8n and Groq AI. (Merge your code, and a robot will write your docs, your blog post, and your video script for you - automatically, in seconds)"
         },
         {
-            id: 13,
+            id: 14,
             title: "AuraSpot",
             category: "Full Stack / Real-time",
             technologies: "React/Next.js, Firebase (Realtime DB & Auth), CSS Modules",
@@ -177,7 +187,7 @@ export const config = {
             description: "A real-time real estate platform for finding, buying, or selling hostels, PGs, and houses with localized discovery and seamless user interaction."
         },
         {
-            id: 14,
+            id: 15,
             title: "CondBot - Rule-Based Conversational Chatbot",
             category: "AI / Chatbot",
             technologies: "Python, Regular Expressions, HTML5, CSS3, JavaScript",
@@ -187,7 +197,7 @@ export const config = {
             description: "A rule-based conversational chatbot that processes user text through regular expression matching and conditional logic. Recognizes intents like greetings, name introduction, date/time queries, jokes, and farewells with scripted responses. Includes both terminal interface and web GUI."
         },
         {
-            id: 15,
+            id: 16,
             title: "CaptionAI - Image Captioning Platform",
             category: "Deep Learning / Computer Vision",
             technologies: "Python, PyTorch, ResNet50, LSTM, React, Vercel",
@@ -197,7 +207,7 @@ export const config = {
             description: "A full-stack web application that automatically generates natural-language captions for images. Combines a pre-trained CNN feature extractor (ResNet50 / VGG16) with an attention-based LSTM decoder and an image-aware analysis engine inferring scene type, lighting, and color."
         },
         {
-            id: 16,
+            id: 17,
             title: "Matinee - Hybrid Movie Recommendation System",
             category: "Web App / Recommender Engine",
             technologies: "Vanilla JavaScript, HTML5, CSS3, Vite, TMDB API",
