@@ -23,7 +23,7 @@ const Loading = ({ percent }: { percent: number }) => {
     import("./utils/initialFX").then((module) => {
       if (isLoaded) {
         setClicked(true);
-        // On touch devices auto-advance immediately — no mouse click needed
+        // On touch devices auto-advance immediately - no mouse click needed
         const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
         const delay = isTouchDevice ? 300 : 900;
         setTimeout(() => {

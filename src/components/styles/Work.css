@@ -48,7 +48,7 @@
   flex-direction: column-reverse;
 }
 
-/* Decorative full-bleed horizontal rules — capped to 100vw so they never
+/* Decorative full-bleed horizontal rules - capped to 100vw so they never
    inflate .work-flex's scrollWidth and break the GSAP measurement. */
 .work-flex::before,
 .work-flex::after {

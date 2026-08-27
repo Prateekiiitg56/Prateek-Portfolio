@@ -60,7 +60,7 @@ export const config = {
             image: "/images/project16.jpg",
             link: "https://github.com/Prateekiiitg56/UiUxDesign",
             deploy: "https://ui-ux-design-steel.vercel.app/",
-            description: "An enterprise-grade AI design system extraction and prompt synthesis frontend. Automatically extracts visual design tokens—including color palettes, typography scales, layout order, component states, spacing metrics, and micro-interactions—from URLs, screenshots, or videos via Playwright DOM inspection and Gemini Vision. Synthesizes production-ready prompts for Claude, Cursor, v0, and bolt.new with 3D theme prompting (Three.js/R3F) and n8n webhook integration."
+            description: "An enterprise-grade AI design system extraction and prompt synthesis frontend. Automatically extracts visual design tokens - including color palettes, typography scales, layout order, component states, spacing metrics, and micro-interactions - from URLs, screenshots, or videos via Playwright DOM inspection and Gemini Vision. Synthesizes production-ready prompts for Claude, Cursor, v0, and bolt.new with 3D theme prompting (Three.js/R3F) and n8n webhook integration."
         },
         {
             id: 2,
@@ -84,7 +84,7 @@ export const config = {
         },
         {
             id: 4,
-            title: "Apex Garage — F1 Engineering Portfolio",
+            title: "Apex Garage - F1 Engineering Portfolio",
             category: "3D Web / F1 Engineering",
             technologies: "React 18, Vite, Three.js, React Three Fiber (R3F), Drei, Tailwind CSS, GSAP",
             image: "/images/project17.png",
@@ -110,7 +110,7 @@ export const config = {
             image: "/images/project-6.jpg",
             link: "https://github.com/Prateekiiitg56/The-Matrix.git",
             deploy: "https://the-matrix-rho.vercel.app/",
-            description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct — a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
+            description: "A dual-world gamified learning OS. The Red Pill launches a brutalist DSA tracker with MongoDB-backed problem sets, streaks, and analytics. The Blue Pill opens The Construct - a Python curriculum with in-browser WASM execution via Pyodide, Monaco editor integration, 7-module curriculum tree, and XP-based rank progression."
         },
         {
             id: 7,
@@ -229,7 +229,7 @@ export const config = {
         develop: {
             title: "FULL-STACK",
             description: "Building modern web applications",
-            details: "I build responsive web apps with React/Next.js, Firebase, and Node.js—focusing on clean UI, solid architecture, and real-world usability.",
+            details: "I build responsive web apps with React/Next.js, Firebase, and Node.js - focusing on clean UI, solid architecture, and real-world usability.",
             tools: ["JavaScript (ES6+)", "React", "Next.js", "Node.js", "Firebase", "HTML5", "CSS3", "Tailwind CSS", "IndexedDB", "Git/GitHub"]
         },
         design: {

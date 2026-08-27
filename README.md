@@ -1,4 +1,4 @@
-# Prateek Singh — Portfolio
+# Prateek Singh - Portfolio
 
 ## Instructions 🛠️
 

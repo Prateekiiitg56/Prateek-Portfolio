@@ -7,7 +7,7 @@ try {
   require('dotenv').config({ path: '.env.local' });
   require('dotenv').config();
 } catch {
-  // dotenv not installed or no env files — that's fine
+  // dotenv not installed or no env files - that's fine
 }
 
 const app = express();
