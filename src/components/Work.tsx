@@ -73,7 +73,7 @@ const Work = () => {
         </h2>
         <div className="work-flex">
           {config.projects
-            .slice(0, isMobile && !showAll ? MOBILE_INITIAL_COUNT : 5)
+            .slice(0, isMobile && !showAll ? MOBILE_INITIAL_COUNT : 8)
             .map((project, index) => (
             <div
               className="work-box"

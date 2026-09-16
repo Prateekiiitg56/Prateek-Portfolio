@@ -53,6 +53,46 @@ export const config = {
     ],
     projects: [
         {
+            id: 18,
+            title: "Sylva 3D Living Green Hero - Landing Page 1",
+            category: "3D Web / Interactive Landing Page",
+            technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
+            image: "/images/image4.jpg",
+            link: "https://landing-page1-brown-omega.vercel.app/",
+            deploy: "https://landing-page1-brown-omega.vercel.app/",
+            description: "An interactive moss-root world 3D landing page featuring pale flowers, ferns, drifting pollen, dynamic WebGL shaders, and native interactive controls."
+        },
+        {
+            id: 19,
+            title: "Sylva 3D Interactive Ecosystem - Landing Page 2",
+            category: "3D Web / Interactive Landing Page",
+            technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
+            image: "/images/images.jpg",
+            link: "https://landing-page2-eta-three.vercel.app/",
+            deploy: "https://landing-page2-eta-three.vercel.app/",
+            description: "A modern 3D living green landing page featuring real-time shader dynamics, responsive 3D hero interactions, and an immersive natural ecosystem aesthetic."
+        },
+        {
+            id: 20,
+            title: "Sylva WebGL Foliage Showcase - Landing Page 3",
+            category: "3D Web / Interactive Landing Page",
+            technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
+            image: "/images/images2.jpg",
+            link: "https://landing-page3-mauve.vercel.app/",
+            deploy: "https://landing-page3-mauve.vercel.app/",
+            description: "An immersive WebGL 3D landing page showcase with real-time particle lighting, foliage shaders, and fluid scroll micro-interactions."
+        },
+        {
+            id: 21,
+            title: "Sylva Living Hero Experience - Landing Page 4",
+            category: "3D Web / Interactive Landing Page",
+            technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
+            image: "/images/imeg3.avif",
+            link: "https://landing-page4-ebon.vercel.app/",
+            deploy: "https://landing-page4-ebon.vercel.app/",
+            description: "An elegant 3D green hero landing page powered by custom WebGL shaders, interactive mouse lighting, and high-performance animation framing."
+        },
+        {
             id: 1,
             title: "UiUxDesigner - Enterprise AI Design System Extraction & Prompt Synthesis",
             category: "AI / Design System / Code Synthesis",
