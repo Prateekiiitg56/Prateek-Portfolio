@@ -8,7 +8,7 @@
   line-height: 1.5;
   scroll-behavior: smooth;
   color-scheme: light dark;
-  color: #eae5ec;
+  color: var(--textColor);
   background-color: var(--backgroundColor);
 
   font-synthesis: none;
@@ -18,8 +18,14 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  --accentColor: #c2a4ff;
-  --backgroundColor: #0b080c;
+  --accentColor: #63e6ff;
+  --accentSecondary: #7c6cff;
+  --accentTertiary: #d946ef;
+  --backgroundColor: #070a14;
+  --surfaceColor: #11182a;
+  --textColor: #f1f5ff;
+  --mutedColor: #9ca9c2;
+  --glowColor: rgba(99, 230, 255, 0.24);
   --vh: 100vh;
   --vh: 100svh;
 }
@@ -88,7 +94,10 @@ main {
 body {
   margin: 0;
   height: auto;
-  background-color: #000;
+  background:
+    radial-gradient(circle at 78% 12%, rgba(124, 108, 255, 0.24), transparent 32%),
+    radial-gradient(circle at 15% 78%, rgba(217, 70, 239, 0.1), transparent 28%),
+    var(--backgroundColor);
   flex-grow: 1;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
@@ -137,7 +146,8 @@ body {
   margin-bottom: 0;
   padding-top: 150px;
   padding-bottom: 150px;
-  background: linear-gradient(180deg, rgba(11, 8, 12, 0.95) 0%, rgba(11, 8, 12, 0.98) 100%);
+  background:
+    linear-gradient(135deg, rgba(7, 10, 20, 0.98), rgba(17, 24, 42, 0.95));
   background-color: var(--backgroundColor);
   overflow: hidden;
   display: flex;
@@ -154,8 +164,8 @@ body {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(194, 164, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(194, 164, 255, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(99, 230, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(217, 70, 239, 0.12) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }

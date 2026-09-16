@@ -54,9 +54,35 @@
 }
 
 .project-modal-close:hover {
-  background: var(--accentColor, #c2a4ff);
+  background: var(--accentColor, #63e6ff);
   color: #000;
   transform: scale(1.08);
+}
+
+.project-modal-navigation {
+  position: absolute;
+  top: 18px;
+  left: 28px;
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+}
+
+.project-modal-navigation button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.project-modal-navigation button:hover {
+  color: #000;
+  border-color: var(--accentColor);
+  background: var(--accentColor);
 }
 
 /* Modal Content Grid */
@@ -111,7 +137,7 @@
   align-items: center;
   gap: 6px;
   background: rgba(194, 164, 255, 0.1);
-  color: var(--accentColor, #c2a4ff);
+  color: var(--accentColor, #63e6ff);
   font-size: 12px;
   font-weight: 500;
   padding: 5px 12px;
@@ -201,7 +227,7 @@
 }
 
 .btn-deploy {
-  background: var(--accentColor, #c2a4ff);
+  background: var(--accentColor, #63e6ff);
   color: #000000;
   font-weight: 600;
   border: none;

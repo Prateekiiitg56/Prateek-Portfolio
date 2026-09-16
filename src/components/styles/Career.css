@@ -17,11 +17,7 @@
   line-height: 70px;
   font-weight: 400;
   text-align: center;
-  background: linear-gradient(0deg, #7f40ff, #ffffff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #8b7dff;
   margin-top: 50px;
   margin-bottom: 90px;
 }
@@ -91,7 +87,7 @@
   width: 3px;
   height: 100%;
   background-image: linear-gradient(to top,
-      #aa42ff 20%,
+      #d946ef 20%,
       var(--accentColor) 50%,
       transparent 95%);
   max-height: 0%;
@@ -102,7 +98,7 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #aa42ff;
+  background-color: #d946ef;
   width: 10px;
   height: 10px;
   border-radius: 50px;

@@ -44,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 150px;
-  background: linear-gradient(to bottom, #0b080c 0%, transparent 100%);
+  background: linear-gradient(to bottom, #070a14 0%, transparent 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -57,7 +57,7 @@
   left: 0;
   width: 100%;
   height: 150px;
-  background: linear-gradient(to top, #0b080c 0%, transparent 100%);
+  background: linear-gradient(to top, #070a14 0%, transparent 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -78,11 +78,7 @@
   font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 50px;
-  background: linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #63e6ff;
 }
 
 /* Pyramid Container */
@@ -122,9 +118,9 @@
 
 .techstack-item:hover {
   transform: translateY(-6px) scale(1.08);
-  background: rgba(194, 164, 255, 0.1);
+  background: rgba(99, 230, 255, 0.1);
   border-color: var(--accentColor);
-  box-shadow: 0 8px 30px rgba(194, 164, 255, 0.25);
+  box-shadow: 0 8px 30px rgba(99, 230, 255, 0.25);
 }
 
 .techstack-item img {
