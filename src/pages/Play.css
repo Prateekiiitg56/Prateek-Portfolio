@@ -22,7 +22,7 @@ body:has(.play-page) {
   left: -150px;
   width: 300px;
   height: 300px;
-  background-color: #fb8dff;
+  background-color: #d946ef;
   box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
   filter: blur(60px);
   border-radius: 50%;
@@ -39,7 +39,7 @@ body:has(.play-page) {
   right: -100px;
   width: 250px;
   height: 250px;
-  background-color: #c2a4ff;
+  background-color: #8b7dff;
   box-shadow: inset -30px 30px 40px rgba(84, 0, 255, 0.5);
   filter: blur(70px);
   border-radius: 50%;
@@ -180,13 +180,13 @@ body:has(.play-page) {
 .player-avatar {
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, rgba(251, 141, 255, 0.2), rgba(194, 164, 255, 0.1));
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.2), rgba(215, 255, 79, 0.1));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  border: 1px solid rgba(194, 164, 255, 0.2);
+  border: 1px solid rgba(215, 255, 79, 0.2);
   overflow: hidden;
 }
 
@@ -242,14 +242,14 @@ body:has(.play-page) {
 .chess-board-wrapper {
   position: relative;
   padding: 10px;
-  background: linear-gradient(145deg, rgba(20, 15, 25, 0.95), rgba(11, 8, 12, 0.98));
+  background: linear-gradient(145deg, rgba(16, 23, 34, 0.95), rgba(8, 11, 18, 0.98));
   border-radius: 16px;
   box-shadow:
-    0 0 80px rgba(251, 141, 255, 0.12),
-    0 0 120px rgba(194, 164, 255, 0.08),
+    0 0 80px rgba(124, 92, 255, 0.12),
+    0 0 120px rgba(215, 255, 79, 0.08),
     0 25px 50px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(194, 164, 255, 0.25);
+  border: 1px solid rgba(215, 255, 79, 0.25);
   flex-shrink: 0;
 }
 
@@ -283,11 +283,11 @@ body:has(.play-page) {
 }
 
 .chess-square.selected {
-  background-color: rgba(251, 141, 255, 0.5) !important;
+  background-color: rgba(217, 70, 239, 0.5) !important;
 }
 
 .chess-square.last-move {
-  background-color: rgba(194, 164, 255, 0.3) !important;
+  background-color: rgba(99, 230, 255, 0.3) !important;
 }
 
 .chess-square.in-check {
@@ -381,7 +381,7 @@ body:has(.play-page) {
 }
 
 .game-status span.check {
-  color: #fb8dff;
+  color: #63e6ff;
   font-weight: 600;
 }
 

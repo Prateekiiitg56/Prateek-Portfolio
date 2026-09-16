@@ -5,9 +5,16 @@ import "./styles/ProjectModal.css";
 interface ProjectModalProps {
   project: any;
   onClose: () => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
 }
 
-const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+const ProjectModal = ({
+  project,
+  onClose,
+  onPrevious,
+  onNext,
+}: ProjectModalProps) => {
   // Close modal on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -38,6 +45,16 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         >
           <FiX />
         </button>
+        {onPrevious && onNext && (
+          <div className="project-modal-navigation">
+            <button type="button" onClick={onPrevious} aria-label="Previous project">
+              ←
+            </button>
+            <button type="button" onClick={onNext} aria-label="Next project">
+              →
+            </button>
+          </div>
+        )}
 
         <div className="project-modal-grid">
           <div className="project-modal-image-col">
