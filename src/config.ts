@@ -54,7 +54,7 @@ export const config = {
     projects: [
         {
             id: 18,
-            title: "Sylva 3D Living Green Hero - Landing Page 1",
+            title: "3D Living Green Hero",
             category: "3D Web / Interactive Landing Page",
             technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
             image: "/images/image4.jpg",
@@ -64,7 +64,7 @@ export const config = {
         },
         {
             id: 19,
-            title: "Sylva 3D Interactive Ecosystem - Landing Page 2",
+            title: "3D Interactive Ecosystem",
             category: "3D Web / Interactive Landing Page",
             technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
             image: "/images/images.jpg",
@@ -74,7 +74,7 @@ export const config = {
         },
         {
             id: 20,
-            title: "Sylva WebGL Foliage Showcase - Landing Page 3",
+            title: "WebGL Foliage Showcase",
             category: "3D Web / Interactive Landing Page",
             technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
             image: "/images/images2.jpg",
@@ -84,7 +84,7 @@ export const config = {
         },
         {
             id: 21,
-            title: "Sylva Living Hero Experience - Landing Page 4",
+            title: "Living Hero Experience",
             category: "3D Web / Interactive Landing Page",
             technologies: "React, Three.js, ThreeUI, WebGL, GSAP, Tailwind CSS",
             image: "/images/imeg3.avif",
