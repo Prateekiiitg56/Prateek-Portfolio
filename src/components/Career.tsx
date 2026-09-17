@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
 import "./styles/Career.css";
 import { config } from "../config";
 
@@ -10,8 +12,37 @@ const getDisplayYear = (period: string) => {
 };
 
 const Career = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  // Scroll reveal: stagger-in career-info-box with translateY slide-up
+  // (GSAP in GsapScroll.ts handles opacity + timeline draw; anime.js adds the Y slide)
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          animate('.career-info-box', {
+            translateY: [40, 0],
+            duration: 700,
+            delay: stagger(200),
+            ease: 'outQuad',
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="career-section section-container">
+    <div className="career-section section-container" ref={sectionRef}>
       <div className="career-container">
         <h2>
           My career <span>&</span>

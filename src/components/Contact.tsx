@@ -3,7 +3,8 @@ import "./styles/Contact.css";
 import { config } from "../config";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { animate } from "animejs";
+import { useEffect, useCallback } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,6 +57,23 @@ const Contact = () => {
     };
   }, []);
 
+  // Squish micro-interaction on social links
+  const handleSocialDown = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    animate(e.currentTarget, {
+      scale: 0.92,
+      duration: 100,
+      ease: 'inQuad',
+    });
+  }, []);
+
+  const handleSocialUp = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    animate(e.currentTarget, {
+      scale: 1,
+      duration: 400,
+      ease: 'outElastic(1, 0.4)',
+    });
+  }, []);
+
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
@@ -81,6 +99,9 @@ const Contact = () => {
               rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              onMouseDown={handleSocialDown}
+              onMouseUp={handleSocialUp}
+              onMouseLeave={handleSocialUp}
             >
               Github <MdArrowOutward />
             </a>
@@ -90,6 +111,9 @@ const Contact = () => {
               rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              onMouseDown={handleSocialDown}
+              onMouseUp={handleSocialUp}
+              onMouseLeave={handleSocialUp}
             >
               Linkedin <MdArrowOutward />
             </a>
@@ -100,6 +124,9 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
+                onMouseDown={handleSocialDown}
+                onMouseUp={handleSocialUp}
+                onMouseLeave={handleSocialUp}
               >
                 Twitter <MdArrowOutward />
               </a>
@@ -111,6 +138,9 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
+                onMouseDown={handleSocialDown}
+                onMouseUp={handleSocialUp}
+                onMouseLeave={handleSocialUp}
               >
                 Facebook <MdArrowOutward />
               </a>
@@ -122,6 +152,9 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
+                onMouseDown={handleSocialDown}
+                onMouseUp={handleSocialUp}
+                onMouseLeave={handleSocialUp}
               >
                 Instagram <MdArrowOutward />
               </a>

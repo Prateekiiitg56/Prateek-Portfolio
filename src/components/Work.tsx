@@ -3,7 +3,8 @@ import WorkImage from "./WorkImage";
 import ProjectModal from "./ProjectModal";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useState } from "react";
+import { animate } from "animejs";
+import { useEffect, useState, useCallback } from "react";
 import { config } from "../config";
 import { Link } from "react-router-dom";
 
@@ -15,6 +16,27 @@ const Work = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [showAll, setShowAll] = useState(false);
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+  // anime.js hover: subtle scale + tilt on mouse enter, reset on leave
+  const handleBoxEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
+    animate(e.currentTarget, {
+      scale: 1.02,
+      rotate: '0.5deg',
+      duration: 300,
+      ease: 'outQuad',
+    });
+  }, [isMobile]);
+
+  const handleBoxLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
+    animate(e.currentTarget, {
+      scale: 1,
+      rotate: '0deg',
+      duration: 300,
+      ease: 'outQuad',
+    });
+  }, [isMobile]);
 
   useEffect(() => {
     // Disable pinning on mobile to allow vertical scrolling
@@ -79,6 +101,8 @@ const Work = () => {
               className="work-box"
               key={project.id}
               onClick={() => setSelectedProject(project)}
+              onMouseEnter={handleBoxEnter}
+              onMouseLeave={handleBoxLeave}
               data-cursor="disable"
               style={{ cursor: "pointer" }}
             >

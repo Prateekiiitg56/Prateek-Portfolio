@@ -53,6 +53,8 @@
   position: relative;
   padding: 50px;
   box-sizing: border-box;
+  opacity: 0;
+  will-change: transform, opacity;
 }
 
 .what-noTouch:hover,

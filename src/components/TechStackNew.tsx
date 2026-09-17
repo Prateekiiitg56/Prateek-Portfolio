@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
 import "./styles/TechStackNew.css";
 
 interface TechItem {
@@ -72,6 +74,54 @@ const techStack: TechItem[][] = [
 ];
 
 const TechStackNew = () => {
+  const pyramidRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  // Scroll reveal: fade + scale from center-out stagger
+  useEffect(() => {
+    const el = pyramidRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          animate('.techstack-item', {
+            opacity: [0, 1],
+            scale: [0.6, 1],
+            duration: 600,
+            delay: stagger(40, { from: 'center' }),
+            ease: 'outQuad',
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Hover: quick scale-up pulse on each icon
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    animate(e.currentTarget, {
+      scale: [1, 1.18],
+      translateY: [0, -6],
+      duration: 250,
+      ease: 'outQuad',
+    });
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    animate(e.currentTarget, {
+      scale: [1.18, 1],
+      translateY: [-6, 0],
+      duration: 300,
+      ease: 'outQuad',
+    });
+  };
+
   return (
     <div className="techstack-new">
       {/* Video Background */}
@@ -93,7 +143,7 @@ const TechStackNew = () => {
       <div className="techstack-content">
         <h2>Tech Stack</h2>
         
-        <div className="techstack-pyramid">
+        <div className="techstack-pyramid" ref={pyramidRef}>
           {techStack.map((row, rowIndex) => (
             <div key={rowIndex} className="techstack-row">
               {row.map((tech, techIndex) => (
@@ -105,6 +155,8 @@ const TechStackNew = () => {
                   className="techstack-item"
                   title={tech.name}
                   data-cursor="disable"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <img src={tech.icon} alt={tech.name} />
                   <span>{tech.name}</span>

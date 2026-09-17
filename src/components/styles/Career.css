@@ -38,6 +38,8 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  transform: translateY(40px);
+  will-change: transform;
 }
 
 .career-info-box p {

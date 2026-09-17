@@ -1,13 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import { animate, stagger } from "animejs";
 import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { config } from "../config";
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
+
+  // Touch handler for mobile
   useEffect(() => {
     if (ScrollTrigger.isTouch) {
       containerRef.current.forEach((container) => {
@@ -25,8 +31,52 @@ const WhatIDo = () => {
       });
     };
   }, []);
+
+  // Scroll reveal: stagger-in .what-content cards
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          animate('.what-content', {
+            opacity: [0, 1],
+            translateX: [40, 0],
+            duration: 700,
+            delay: stagger(200),
+            ease: 'outQuad',
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Hover lift on .what-content cards
+  const handleContentEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    animate(e.currentTarget, {
+      translateY: -6,
+      duration: 300,
+      ease: 'outQuad',
+    });
+  }, []);
+
+  const handleContentLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    animate(e.currentTarget, {
+      translateY: 0,
+      duration: 300,
+      ease: 'outQuad',
+    });
+  }, []);
+
   return (
-    <div className="whatIDO">
+    <div className="whatIDO" ref={sectionRef}>
       <div className="what-box">
         <h2 className="title">
           W<span className="hat-h2">HAT</span>
@@ -62,6 +112,8 @@ const WhatIDo = () => {
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
+            onMouseEnter={handleContentEnter}
+            onMouseLeave={handleContentLeave}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -105,6 +157,8 @@ const WhatIDo = () => {
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
+            onMouseEnter={handleContentEnter}
+            onMouseLeave={handleContentLeave}
           >
             <div className="what-border1">
               <svg height="100%">
