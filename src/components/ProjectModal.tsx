@@ -8,6 +8,7 @@ interface ProjectModalProps {
   onClose: () => void;
   onPrevious?: () => void;
   onNext?: () => void;
+  skipIntroAnim?: boolean;
 }
 
 const ProjectModal = ({
@@ -15,6 +16,7 @@ const ProjectModal = ({
   onClose,
   onPrevious,
   onNext,
+  skipIntroAnim = false,
 }: ProjectModalProps) => {
   const [closing, setClosing] = useState(false);
   const backdropRef = useRef<HTMLDivElement>(null);
@@ -64,6 +66,8 @@ const ProjectModal = ({
   // Stagger-in tech-tag pills when modal opens
   useEffect(() => {
     if (!project) return;
+    // Reset closing flag when a new project is set (reopen or nav)
+    setClosing(false);
     // Small delay to let the CSS open animation start first
     const timer = setTimeout(() => {
       animate('.tech-tag', {
@@ -81,12 +85,22 @@ const ProjectModal = ({
 
   return (
     <div
-      className="project-modal-backdrop"
+      className={`project-modal-backdrop${skipIntroAnim ? ' no-intro-anim' : ''}`}
       onClick={handleClose}
       role="dialog"
       aria-modal="true"
       ref={backdropRef}
     >
+      {onPrevious && onNext && (
+        <div className="project-modal-navigation">
+          <button type="button" onClick={(e) => { e.stopPropagation(); onPrevious(); }} aria-label="Previous project">
+            ←
+          </button>
+          <button type="button" onClick={(e) => { e.stopPropagation(); onNext(); }} aria-label="Next project">
+            →
+          </button>
+        </div>
+      )}
       <div
         className="project-modal-card"
         onClick={(e) => e.stopPropagation()}
@@ -100,16 +114,6 @@ const ProjectModal = ({
         >
           <FiX />
         </button>
-        {onPrevious && onNext && (
-          <div className="project-modal-navigation">
-            <button type="button" onClick={onPrevious} aria-label="Previous project">
-              ←
-            </button>
-            <button type="button" onClick={onNext} aria-label="Next project">
-              →
-            </button>
-          </div>
-        )}
 
         <div className="project-modal-grid">
           <div className="project-modal-image-col">
