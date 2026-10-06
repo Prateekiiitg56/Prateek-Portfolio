@@ -38,14 +38,6 @@ npm run dev
 npm run build
 ```
 
-## Environment
-
-Create a `.env.local` in the project root if you need to set API keys:
-
-```
-GROQ_API_KEY=your_groq_api_key_here
-```
-
 ## Deployment
 
 This project is deployed on Vercel. Build command: `npm run build`, Output directory: `dist`.
@@ -55,10 +47,6 @@ If you prefer GitHub Pages, you can build and publish the `dist` folder to Pages
 ## Contributing
 
 If you see any issues or want to contribute, open a PR or an issue on GitHub.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## License
 
