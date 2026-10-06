@@ -39,7 +39,8 @@ app.post('/api/chat', async (req, res) => {
   return handler(req, res);
 });
 
-const port = Number(process.env.PORT || 8787);
+// DEV_API_PORT is shared with the Vite proxy (vite.config.ts); set it in .env.local if 8787 is taken.
+const port = Number(process.env.DEV_API_PORT || process.env.PORT || 8787);
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`[dev-api] listening on http://localhost:${port}`);
