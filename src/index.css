@@ -39,10 +39,6 @@ h6 {
   font-family: "Geist", sans-serif;
 }
 
-body {
-  overflow: hidden;
-}
-
 /* Allow scrolling on mobile */
 @media only screen and (max-width: 768px) {
   body {

@@ -7,7 +7,10 @@ const CharacterModel = lazy(() => import("./components/Character"));
 const MainContainer = lazy(() => import("./components/MainContainer"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
 const Play = lazy(() => import("./pages/Play"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 import { LoadingProvider } from "./context/LoadingProvider";
+import PageLoader from "./components/PageLoader";
+import PageTitle from "./components/PageTitle";
 
 const App = () => {
   return (
@@ -17,6 +20,7 @@ const App = () => {
           path="/"
           element={
             <LoadingProvider>
+              <PageTitle title="Prateek Singh - Student & Full-Stack Developer" />
               <Suspense>
                 <MainContainer>
                   <Suspense>
@@ -30,7 +34,8 @@ const App = () => {
         <Route
           path="/myworks"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<PageLoader />}>
+              <PageTitle title="All Works | Prateek Singh" />
               <MyWorks />
             </Suspense>
           }
@@ -38,8 +43,18 @@ const App = () => {
         <Route
           path="/play"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<PageLoader />}>
+              <PageTitle title="Play | Prateek Singh" />
               <Play />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<PageLoader />}>
+              <PageTitle title="Page not found | Prateek Singh" />
+              <NotFound />
             </Suspense>
           }
         />

@@ -46,7 +46,16 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => { }, [loading]);
+  // Keep the page still while the intro loader is on screen. This used to be a global
+  // `body { overflow: hidden }`, which also froze pages like /myworks when opened directly.
+  useEffect(() => {
+    if (!isLoading) return;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, [isLoading]);
 
   return (
     <LoadingContext.Provider value={value as LoadingType}>
