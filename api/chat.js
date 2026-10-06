@@ -1,3 +1,5 @@
+import { SYSTEM_PROMPT } from './_prompt.js';
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
@@ -18,7 +20,11 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                messages,
+                // the persona always comes from the server; any system message from the client is dropped
+                messages: [
+                    { role: 'system', content: SYSTEM_PROMPT },
+                    ...(Array.isArray(messages) ? messages.filter((m) => m && m.role !== 'system') : []),
+                ],
                 model: 'llama-3.3-70b-versatile'
             })
         });
