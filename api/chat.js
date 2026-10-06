@@ -38,7 +38,10 @@ export default async function handler(req, res) {
             body: JSON.stringify({
                 // the persona always comes from the server; client system messages were dropped above
                 messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-                model: 'llama-3.3-70b-versatile'
+                model: 'llama-3.3-70b-versatile',
+                // short, chat-sized replies keep latency and token cost predictable
+                max_tokens: 400,
+                temperature: 0.6
             })
         });
 
@@ -48,9 +51,12 @@ export default async function handler(req, res) {
             throw new Error(data.error?.message || 'Failed to fetch from Groq');
         }
 
-        return res.status(200).json(data);
+        // pass on only the reply, in the same shape the Play page already reads
+        const content = data.choices?.[0]?.message?.content ?? '';
+        return res.status(200).json({ choices: [{ message: { role: 'assistant', content } }] });
     } catch (error) {
+        // details stay in the server log; the browser only gets a generic message
         console.error('Groq API Error:', error);
-        return res.status(500).json({ error: 'Internal Server Error', details: error.message });
+        return res.status(502).json({ error: 'The AI service did not respond. Please try again.' });
     }
 }
