@@ -762,9 +762,14 @@ body:has(.play-page) {
   transition: all 0.2s;
 }
 
-.chat-send-btn:hover {
+.chat-send-btn:not(:disabled):hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(124, 108, 255, 0.4);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* Responsive for chat */

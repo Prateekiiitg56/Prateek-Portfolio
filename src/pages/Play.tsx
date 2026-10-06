@@ -207,7 +207,8 @@ const Play = () => {
   };
 
   const sendMessage = async () => {
-    if (!chatInput.trim()) return;
+    // one question at a time: a second send would race the pending reply
+    if (!chatInput.trim() || isTyping) return;
 
     const userMessage: ChatMessage = { role: 'user', content: chatInput };
     setChatMessages(prev => [...prev, userMessage]);
@@ -251,7 +252,7 @@ const Play = () => {
       }
     } catch (error) {
       console.error('Chat error:', error);
-      const message = error && typeof error === 'object' && 'message' in error ? String((error as any).message) : '';
+      const message = error instanceof Error ? error.message : '';
       const errorMessage: ChatMessage = {
         role: 'assistant',
         content: message ? `Chat unavailable: ${message}` : 'Sorry, having some connection issues. Try again? 😅'
@@ -262,8 +263,9 @@ const Play = () => {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    // Enter while an IME is composing (Chinese, Japanese, Korean input) confirms the text, not a send
+    if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
       e.preventDefault();
       sendMessage();
     }
@@ -320,7 +322,7 @@ const Play = () => {
           <div className="chat-header">
             <span className="chat-title">💬 Talk with me</span>
           </div>
-          <div className="chat-messages">
+          <div className="chat-messages" aria-live="polite">
             {chatMessages.map((msg, index) => (
               <div key={index} className={`chat-message ${msg.role}`}>
                 <div className="message-content">{msg.content}</div>
@@ -338,13 +340,20 @@ const Play = () => {
             <input
               type="text"
               className="chat-input"
+              aria-label="Message for Prateek's AI"
               placeholder="Type a message..."
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyDown}
               data-cursor="disable"
             />
-            <button className="chat-send-btn" onClick={sendMessage} data-cursor="disable">
+            <button
+              className="chat-send-btn"
+              onClick={sendMessage}
+              disabled={isTyping || !chatInput.trim()}
+              aria-label="Send message"
+              data-cursor="disable"
+            >
               ➤
             </button>
           </div>
