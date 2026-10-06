@@ -26,12 +26,14 @@ const Navbar = () => {
     // Start paused
     lenis.stop();
 
-    // Handle smooth scroll animation frame
+    // Handle smooth scroll animation frame (cancelled on unmount, otherwise every visit
+    // to the home page would leave another loop running)
+    let rafId = 0;
     function raf(time: number) {
       lenis?.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle navigation links
     const links = document.querySelectorAll(".header ul a");
@@ -56,11 +58,12 @@ const Navbar = () => {
     });
 
     // Handle resize
-    window.addEventListener("resize", () => {
-      lenis?.resize();
-    });
+    const onResize = () => lenis?.resize();
+    window.addEventListener("resize", onResize);
 
     return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", onResize);
       lenis?.destroy();
       lenis = null;
     };
