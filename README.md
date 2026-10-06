@@ -16,6 +16,8 @@ GROQ_API_KEY=your_groq_api_key_here
 
 Then run `npm run dev`.
 
+The local API listens on port 8787. If that port is taken, add `DEV_API_PORT=8788` (any free port) to `.env.local`; both the API server and the Vite proxy read it.
+
 ## Quick Start
 
 1. Clone the repo:
@@ -37,6 +39,17 @@ npm run dev
 ```powershell
 npm run build
 ```
+
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the site (Vite) and the local chat API together |
+| `npm run dev:web` | Starts only the site, when you don't need the chat |
+| `npm run dev:api` | Starts only the local chat API (`server/dev-api.cjs`) |
+| `npm run build` | Type checks and builds the production site into `dist` |
+| `npm run preview` | Serves the production build locally |
+| `npm run lint` | Runs ESLint |
 
 ## Deployment
 
