@@ -198,7 +198,8 @@ const Play = () => {
   };
 
   const sendMessage = async () => {
-    if (!chatInput.trim()) return;
+    // one question at a time: a second send would race the pending reply
+    if (!chatInput.trim() || isTyping) return;
 
     const userMessage: ChatMessage = { role: 'user', content: chatInput };
     setChatMessages(prev => [...prev, userMessage]);
@@ -335,7 +336,12 @@ const Play = () => {
               onKeyPress={handleKeyPress}
               data-cursor="disable"
             />
-            <button className="chat-send-btn" onClick={sendMessage} data-cursor="disable">
+            <button
+              className="chat-send-btn"
+              onClick={sendMessage}
+              disabled={isTyping || !chatInput.trim()}
+              data-cursor="disable"
+            >
               ➤
             </button>
           </div>
