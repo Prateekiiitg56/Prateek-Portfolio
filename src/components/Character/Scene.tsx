@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import setCharacter from "./utils/character";
-import setLighting from "./utils/lighting";
+import setLighting, { type StandardMesh } from "./utils/lighting";
 import setAnimations from "./utils/animationUtils";
 import { handleMouseMove, handleHeadRotation } from "./utils/mouseUtils";
 import { useLoading } from "../../context/LoadingProvider";
@@ -49,7 +49,7 @@ const Scene = () => {
     const { loadCharacter } = setCharacter(renderer, scene, camera);
 
     let headBone: THREE.Object3D | null = null;
-    let screenLight: THREE.Object3D | null = null;
+    let screenLight: StandardMesh | null = null;
     let mixer: THREE.AnimationMixer | null = null;
     let killTimeline = () => {};
     let removeHover: (() => void) | undefined;
@@ -100,7 +100,7 @@ const Scene = () => {
         mixer = animations.mixer;
         scene.add(character);
         headBone = character.getObjectByName("spine006") || character.getObjectByName("spine.006") || null;
-        screenLight = character.getObjectByName("screenlight") || null;
+        screenLight = (character.getObjectByName("screenlight") as StandardMesh | undefined) ?? null;
         killTimeline = setCharTimeline(character, camera, say);
 
         await progress.loaded();
