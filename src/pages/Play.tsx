@@ -174,7 +174,7 @@ const Play = () => {
       const to = move.substring(2, 4) as Square;
       makeMove(from, to);
       setEngineThinking(false);
-    }, 12);
+    }, 1500);
     return () => {
       cancelled = true;
       engine.stop();
