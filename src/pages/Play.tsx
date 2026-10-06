@@ -92,19 +92,6 @@ const Play = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (game.turn() === 'b' && !game.isGameOver() && redoxchessRef.current) {
-      setEngineThinking(true);
-      redoxchessRef.current.setPosition(game.fen());
-      redoxchessRef.current.getBestMove((move) => {
-        const from = move.substring(0, 2) as Square;
-        const to = move.substring(2, 4) as Square;
-        makeMove(from, to);
-        setEngineThinking(false);
-      }, 12);
-    }
-  }, [game]);
-
   const getPieceAt = (square: Square): { type: PieceSymbol; color: Color } | null => {
     return game.get(square) || null;
   };
@@ -138,7 +125,7 @@ const Play = () => {
     }
   };
 
-  const makeMove = (from: Square, to: Square) => {
+  const makeMove = useCallback((from: Square, to: Square) => {
     try {
       const gameCopy = new Chess(game.fen());
       const move = gameCopy.move({ from, to, promotion: 'q' }); // Auto-promote to queen
@@ -171,7 +158,29 @@ const Play = () => {
       setSelectedSquare(null);
       setPossibleMoves([]);
     }
-  };
+  }, [game]);
+
+  useEffect(() => {
+    const engine = redoxchessRef.current;
+    if (game.turn() !== 'b' || game.isGameOver() || !engine) return;
+    // A newer position (for example "New Game") cancels this search, so its late move
+    // can no longer be played on top of the new board.
+    let cancelled = false;
+    setEngineThinking(true);
+    engine.setPosition(game.fen());
+    engine.getBestMove((move) => {
+      if (cancelled) return;
+      const from = move.substring(0, 2) as Square;
+      const to = move.substring(2, 4) as Square;
+      makeMove(from, to);
+      setEngineThinking(false);
+    }, 1500);
+    return () => {
+      cancelled = true;
+      engine.stop();
+      setEngineThinking(false);
+    };
+  }, [game, makeMove]);
 
   const resetGame = () => {
     setGame(new Chess());

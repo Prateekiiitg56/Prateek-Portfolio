@@ -40,9 +40,10 @@ class RedoxChessEngine {
     this.send(`position fen ${fen}`);
   }
 
-  getBestMove(onMove: (move: string) => void, depth = 15) {
+  /** Asks for the best move, searching for at most `moveTimeMs` milliseconds. */
+  getBestMove(onMove: (move: string) => void, moveTimeMs = 1500) {
     this.onMoveCallback = onMove;
-    this.send(`go depth ${depth}`);
+    this.send(`go movetime ${moveTimeMs}`);
   }
 
   stop() {
