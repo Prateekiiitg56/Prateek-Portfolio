@@ -53,6 +53,13 @@ const WhatIDo = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Keyboard users open a card with Enter or Space, the same way a tap does on touch screens
+  const handleCardKey = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    handleClick(e.currentTarget);
+  }, []);
+
   // Hover lift on .what-content cards
   const handleContentEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     animate(e.currentTarget, {
@@ -109,6 +116,11 @@ const WhatIDo = () => {
             ref={(el) => setRef(el, 0)}
             onMouseEnter={handleContentEnter}
             onMouseLeave={handleContentLeave}
+            onKeyDown={handleCardKey}
+            tabIndex={0}
+            role="button"
+            aria-expanded={false}
+            aria-label={`${config.skills.develop.title} details`}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -154,6 +166,11 @@ const WhatIDo = () => {
             ref={(el) => setRef(el, 1)}
             onMouseEnter={handleContentEnter}
             onMouseLeave={handleContentLeave}
+            onKeyDown={handleCardKey}
+            tabIndex={0}
+            role="button"
+            aria-expanded={false}
+            aria-label={`${config.skills.design.title} details`}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -193,7 +210,8 @@ const WhatIDo = () => {
 export default WhatIDo;
 
 function handleClick(container: HTMLDivElement) {
-  container.classList.toggle("what-content-active");
+  const expanded = container.classList.toggle("what-content-active");
+  container.setAttribute("aria-expanded", String(expanded));
   container.classList.remove("what-sibling");
   if (container.parentElement) {
     const siblings = Array.from(container.parentElement.children);
@@ -201,6 +219,7 @@ function handleClick(container: HTMLDivElement) {
     siblings.forEach((sibling) => {
       if (sibling !== container) {
         sibling.classList.remove("what-content-active");
+        if (sibling.classList.contains("what-content")) sibling.setAttribute("aria-expanded", "false");
         sibling.classList.toggle("what-sibling");
       }
     });
