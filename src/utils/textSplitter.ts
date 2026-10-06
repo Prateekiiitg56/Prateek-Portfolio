@@ -100,7 +100,7 @@ export class TextSplitter {
       if (items.length === 0) return;
 
       let currentLine: Element[] = [];
-      let lines: Element[][] = [];
+      const lines: Element[][] = [];
       let currentTop = 0;
 
       items.forEach((item) => {
