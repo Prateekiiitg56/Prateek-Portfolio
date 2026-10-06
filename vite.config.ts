@@ -1,5 +1,8 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
+
+// Port of the local API server (server/dev-api.cjs). Read from .env.local or the shell.
+const devApiPort = loadEnv("development", ".", "").DEV_API_PORT || "8787";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,7 +11,7 @@ export default defineConfig({
     proxy: {
       // Local dev only: forward /api/* to our dev API server (see server/dev-api.cjs)
       '/api': {
-        target: 'http://localhost:8787',
+        target: `http://localhost:${devApiPort}`,
         changeOrigin: true,
       },
     },
