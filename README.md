@@ -1,9 +1,5 @@
 # Prateek Singh - Portfolio
 
-## Instructions 🛠️
-
-I have modified the gsap club plugins with the trial plugins, but with the trial plugin you cannot host it🔴. So for Club plugins, Check out here: https://gsap.com/docs/v3/Installation/
-
 **Tech stack:** React • TypeScript • Vite • GSAP • Three.js • WebGL
 
 ## Live Demo 🚀
