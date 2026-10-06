@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animate } from "animejs";
 import { useEffect, useState, useCallback } from "react";
-import { config } from "../config";
+import { config, type Project } from "../config";
 import { Link } from "react-router-dom";
 import { ChapterTag } from "./StoryProgress";
 
@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MOBILE_INITIAL_COUNT = 3;
 
-type Project = (typeof config.projects)[number];
 
 const Work = () => {
   const [selected, setSelected] = useState<{ project: Project; origin: HTMLElement | null } | null>(null);
