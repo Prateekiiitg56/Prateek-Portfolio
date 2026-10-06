@@ -13,23 +13,18 @@ const WhatIDo = () => {
     containerRef.current[index] = el;
   };
 
-  // Touch handler for mobile
+  // Touch devices: tap a card to expand it. Each listener is kept so cleanup removes
+  // the same function (a new arrow function in removeEventListener removes nothing).
   useEffect(() => {
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
-        }
-      });
-    }
-    return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
-        }
-      });
-    };
+    if (!ScrollTrigger.isTouch) return;
+    const cleanups = containerRef.current.map((container) => {
+      if (!container) return () => {};
+      container.classList.remove("what-noTouch");
+      const onClick = () => handleClick(container);
+      container.addEventListener("click", onClick);
+      return () => container.removeEventListener("click", onClick);
+    });
+    return () => cleanups.forEach((cleanup) => cleanup());
   }, []);
 
   // Scroll reveal: stagger-in .what-content cards
