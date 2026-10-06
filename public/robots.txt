@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://prateek-portfolio-tau.vercel.app/sitemap.xml
