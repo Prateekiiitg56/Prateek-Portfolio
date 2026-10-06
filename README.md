@@ -51,6 +51,23 @@ npm run build
 | `npm run preview` | Serves the production build locally |
 | `npm run lint` | Runs ESLint |
 
+## Adding a project
+
+Projects are listed in `src/config.ts` under `projects`. Each entry has:
+
+- `id`: a unique number
+- `title`, `category`, `description`: text shown on the cards and in the project modal
+- `technologies`: a comma-separated list, shown as tags in the modal
+- `image`: a path under `public/`, for example `/images/opt/my-project.webp`
+- `link` (optional): the source code URL
+- `deploy` (optional): the live demo URL; without it the modal shows "Deploy soon"
+
+Keep screenshots small: save them as WebP around 1400 px wide in `public/images/opt/`, for example:
+
+```bash
+ffmpeg -i screenshot.png -vf "scale='min(1400,iw)':-2" -c:v libwebp -quality 78 public/images/opt/my-project.webp
+```
+
 ## Deployment
 
 This project is deployed on Vercel. Build command: `npm run build`, Output directory: `dist`.
