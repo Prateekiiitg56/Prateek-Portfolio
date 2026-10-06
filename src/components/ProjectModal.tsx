@@ -3,10 +3,11 @@ import { createPortal } from "react-dom";
 import { FiGithub, FiExternalLink, FiX, FiLayers } from "react-icons/fi";
 import gsap from "gsap";
 import { lenis } from "./Navbar";
+import type { Project } from "../config";
 import "./styles/ProjectModal.css";
 
 interface ProjectModalProps {
-  project: any;
+  project: Project | null;
   /** The thumbnail that was clicked; its image flies into the modal. */
   originEl?: HTMLElement | null;
   onClose: () => void;
@@ -66,7 +67,7 @@ const ProjectModal = ({ project, originEl, onClose, onPrevious, onNext }: Projec
 
   /* ---------- open: runs before paint so nothing flashes ---------- */
   useLayoutEffect(() => {
-    if (!isOpen) {
+    if (!project) {
       shownIdRef.current = null;
       return;
     }
@@ -195,7 +196,7 @@ const ProjectModal = ({ project, originEl, onClose, onPrevious, onNext }: Projec
 
   if (!project) return null;
 
-  const deployUrl = project.deploy || project.deployLink;
+  const deployUrl = project.deploy;
 
   // portal: section styles (e.g. `.work-section h2`) and pinned transforms must not reach the modal
   return createPortal(

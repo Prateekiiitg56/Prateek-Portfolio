@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { StandardMesh } from "../Character/utils/lighting";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,35 +24,37 @@ export function setCharTimeline(
   say: (index: number) => void
 ) {
   const created: (gsap.core.Animation | ScrollTrigger)[] = [];
-  let screenLight: any, monitor: any;
   let intensity = 0;
   const flickerTimer = window.setInterval(() => (intensity = Math.random()), 200);
 
-  character.children.forEach((object: any) => {
-    if (object.name === "Plane004") {
-      object.children.forEach((child: any) => {
-        child.material.transparent = true;
-        child.material.opacity = 0;
-        if (child.material.name === "Material.027") {
-          monitor = child;
-          child.material.color.set("#FFFFFF");
-        }
-      });
-    }
-    if (object.name === "screenlight") {
-      object.material.transparent = true;
-      object.material.opacity = 0;
-      object.material.emissive.set("#9fefff");
-      created.push(
-        gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-          emissiveIntensity: () => intensity * 8,
-          duration: () => Math.random() * 0.6,
-          delay: () => Math.random() * 0.1,
-        })
-      );
-      screenLight = object;
+  // The monitor group starts invisible and fades in during the "What I do" chapter
+  const monitorGroup = character.children.find((object) => object.name === "Plane004");
+  let monitor: StandardMesh | undefined;
+  monitorGroup?.children.forEach((child) => {
+    const mesh = child as StandardMesh;
+    mesh.material.transparent = true;
+    mesh.material.opacity = 0;
+    if (mesh.material.name === "Material.027") {
+      monitor = mesh;
+      mesh.material.color.set("#FFFFFF");
     }
   });
+
+  const screenLight = character.children.find((object) => object.name === "screenlight") as
+    | StandardMesh
+    | undefined;
+  if (screenLight) {
+    screenLight.material.transparent = true;
+    screenLight.material.opacity = 0;
+    screenLight.material.emissive.set("#9fefff");
+    created.push(
+      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(screenLight.material, {
+        emissiveIntensity: () => intensity * 8,
+        duration: () => Math.random() * 0.6,
+        delay: () => Math.random() * 0.1,
+      })
+    );
+  }
 
   const cleanup = () => {
     window.clearInterval(flickerTimer);

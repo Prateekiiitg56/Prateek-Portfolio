@@ -1,3 +1,15 @@
+/** One project, as shown in the Work section, on /myworks and in the project modal. */
+export interface Project {
+    id: number;
+    title: string;
+    category: string;
+    technologies: string;
+    image: string;
+    link?: string;
+    deploy?: string;
+    description: string;
+}
+
 export const config = {
     resumeUrl: "/Prateekre.pdf",
     developer: {
@@ -256,7 +268,7 @@ export const config = {
             deploy: "https://matinee-peach.vercel.app/",
             description: "A self-contained, hybrid movie recommendation system built with modern vanilla JavaScript, CSS, and Vite. Dynamically fetches real-time cinema catalogs from TMDB, runs math-based recommender engines in your browser, and explains why it recommends each film."
         }
-    ],
+    ] satisfies Project[] as Project[],
     contact: {
         email: "ps332927@gmail.com",
         github: "https://github.com/Prateekiiitg56",

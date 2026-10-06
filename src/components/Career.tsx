@@ -64,9 +64,9 @@ const Career = () => {
                 <h3>{getDisplayYear(exp.period)}</h3>
               </div>
               <p>{exp.description}</p>
-              {(exp as any).referenceLetter && (
+              {exp.referenceLetter && (
                 <a
-                  href={(exp as any).referenceLetter}
+                  href={exp.referenceLetter}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="career-ref-link"

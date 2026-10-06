@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { useCallback, useMemo, useState } from "react";
 import { FiGrid, FiList, FiSearch, FiShuffle } from "react-icons/fi";
-import { config } from "../config";
+import { config, type Project } from "../config";
 import ProjectModal from "../components/ProjectModal";
 import "./MyWorks.css";
 
 const MyWorks = () => {
-  const [selected, setSelected] = useState<{ project: any; origin: HTMLElement | null } | null>(null);
+  const [selected, setSelected] = useState<{ project: Project; origin: HTMLElement | null } | null>(null);
   const selectedProject = selected?.project ?? null;
-  const [featuredProject, setFeaturedProject] = useState<any>(config.projects[0]);
+  const [featuredProject, setFeaturedProject] = useState<Project>(config.projects[0]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -52,7 +52,7 @@ const MyWorks = () => {
   const cardImageFor = (id: number) =>
     document.querySelector<HTMLElement>(`[data-project-id="${id}"] .myworks-card-image`);
 
-  const openProject = useCallback((project: any, origin: HTMLElement | null) => {
+  const openProject = useCallback((project: Project, origin: HTMLElement | null) => {
     setFeaturedProject(project);
     setSelected({ project, origin });
   }, []);
