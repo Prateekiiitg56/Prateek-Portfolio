@@ -41,7 +41,14 @@ app.post('/api/chat', async (req, res) => {
 
 // DEV_API_PORT is shared with the Vite proxy (vite.config.ts); set it in .env.local if 8787 is taken.
 const port = Number(process.env.DEV_API_PORT || process.env.PORT || 8787);
-app.listen(port, () => {
-  // eslint-disable-next-line no-console
+// Express 5 calls this with an error when the server cannot start.
+app.listen(port, (err) => {
+  if (err?.code === 'EADDRINUSE') {
+    console.error(
+      `[dev-api] port ${port} is already in use. Add DEV_API_PORT=<free port> to .env.local and run npm run dev again.`
+    );
+    process.exit(1);
+  }
+  if (err) throw err;
   console.log(`[dev-api] listening on http://localhost:${port}`);
 });
