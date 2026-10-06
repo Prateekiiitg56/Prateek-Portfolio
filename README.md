@@ -1,9 +1,5 @@
 # Prateek Singh - Portfolio
 
-## Instructions 🛠️
-
-I have modified the gsap club plugins with the trial plugins, but with the trial plugin you cannot host it🔴. So for Club plugins, Check out here: https://gsap.com/docs/v3/Installation/
-
 **Tech stack:** React • TypeScript • Vite • GSAP • Three.js • WebGL
 
 ## Live Demo 🚀
@@ -19,6 +15,8 @@ GROQ_API_KEY=your_groq_api_key_here
 ```
 
 Then run `npm run dev`.
+
+The local API listens on port 8787. If that port is taken, add `DEV_API_PORT=8788` (any free port) to `.env.local`; both the API server and the Vite proxy read it.
 
 ## Quick Start
 
@@ -42,12 +40,32 @@ npm run dev
 npm run build
 ```
 
-## Environment
+## Scripts
 
-Create a `.env.local` in the project root if you need to set API keys:
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the site (Vite) and the local chat API together |
+| `npm run dev:web` | Starts only the site, when you don't need the chat |
+| `npm run dev:api` | Starts only the local chat API (`server/dev-api.cjs`) |
+| `npm run build` | Type checks and builds the production site into `dist` |
+| `npm run preview` | Serves the production build locally |
+| `npm run lint` | Runs ESLint |
 
-```
-GROQ_API_KEY=your_groq_api_key_here
+## Adding a project
+
+Projects are listed in `src/config.ts` under `projects`. Each entry has:
+
+- `id`: a unique number
+- `title`, `category`, `description`: text shown on the cards and in the project modal
+- `technologies`: a comma-separated list, shown as tags in the modal
+- `image`: a path under `public/`, for example `/images/opt/my-project.webp`
+- `link` (optional): the source code URL
+- `deploy` (optional): the live demo URL; without it the modal shows "Deploy soon"
+
+Keep screenshots small: save them as WebP around 1400 px wide in `public/images/opt/`, for example:
+
+```bash
+ffmpeg -i screenshot.png -vf "scale='min(1400,iw)':-2" -c:v libwebp -quality 78 public/images/opt/my-project.webp
 ```
 
 ## Deployment
@@ -59,10 +77,6 @@ If you prefer GitHub Pages, you can build and publish the `dist` folder to Pages
 ## Contributing
 
 If you see any issues or want to contribute, open a PR or an issue on GitHub.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## License
 
