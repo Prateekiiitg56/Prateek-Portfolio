@@ -26,22 +26,24 @@ const Navbar = () => {
     // Start paused
     lenis.stop();
 
-    // Handle smooth scroll animation frame
+    // Handle smooth scroll animation frame (cancelled on unmount, otherwise every visit
+    // to the home page would leave another loop running)
+    let rafId = 0;
     function raf(time: number) {
       lenis?.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
+    const links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
+      const element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
+          const elem = e.currentTarget as HTMLAnchorElement;
+          const section = elem.getAttribute("data-href");
           if (section && lenis) {
             const target = document.querySelector(section) as HTMLElement;
             if (target) {
@@ -56,11 +58,12 @@ const Navbar = () => {
     });
 
     // Handle resize
-    window.addEventListener("resize", () => {
-      lenis?.resize();
-    });
+    const onResize = () => lenis?.resize();
+    window.addEventListener("resize", onResize);
 
     return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", onResize);
       lenis?.destroy();
       lenis = null;
     };
