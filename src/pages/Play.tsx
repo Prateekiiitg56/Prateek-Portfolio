@@ -312,7 +312,7 @@ const Play = () => {
           <div className="chat-header">
             <span className="chat-title">💬 Talk with me</span>
           </div>
-          <div className="chat-messages">
+          <div className="chat-messages" aria-live="polite">
             {chatMessages.map((msg, index) => (
               <div key={index} className={`chat-message ${msg.role}`}>
                 <div className="message-content">{msg.content}</div>
@@ -330,6 +330,7 @@ const Play = () => {
             <input
               type="text"
               className="chat-input"
+              aria-label="Message for Prateek's AI"
               placeholder="Type a message..."
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
@@ -340,6 +341,7 @@ const Play = () => {
               className="chat-send-btn"
               onClick={sendMessage}
               disabled={isTyping || !chatInput.trim()}
+              aria-label="Send message"
               data-cursor="disable"
             >
               ➤
