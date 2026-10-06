@@ -243,7 +243,7 @@ const Play = () => {
       }
     } catch (error) {
       console.error('Chat error:', error);
-      const message = error && typeof error === 'object' && 'message' in error ? String((error as any).message) : '';
+      const message = error instanceof Error ? error.message : '';
       const errorMessage: ChatMessage = {
         role: 'assistant',
         content: message ? `Chat unavailable: ${message}` : 'Sorry, having some connection issues. Try again? 😅'
