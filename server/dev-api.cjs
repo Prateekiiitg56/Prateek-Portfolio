@@ -3,7 +3,6 @@ const cors = require('cors');
 
 // Load env from .env/.env.local if present
 try {
-  // eslint-disable-next-line import/no-extraneous-dependencies
   require('dotenv').config({ path: '.env.local' });
   require('dotenv').config();
 } catch {
