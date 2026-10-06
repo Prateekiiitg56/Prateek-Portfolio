@@ -62,6 +62,7 @@ const Navbar = () => {
 
     return () => {
       lenis?.destroy();
+      lenis = null;
     };
   }, []);
   return (

@@ -1,19 +1,17 @@
 import { Link } from "react-router-dom";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { FiGrid, FiList, FiSearch, FiShuffle } from "react-icons/fi";
 import { config } from "../config";
 import ProjectModal from "../components/ProjectModal";
-import { runParticleTransition } from "../utils/particleTransition";
 import "./MyWorks.css";
 
 const MyWorks = () => {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selected, setSelected] = useState<{ project: any; origin: HTMLElement | null } | null>(null);
+  const selectedProject = selected?.project ?? null;
   const [featuredProject, setFeaturedProject] = useState<any>(config.projects[0]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const animatingRef = useRef(false);
-  const [skipIntroAnim, setSkipIntroAnim] = useState(false);
 
   const filters = useMemo(
     () => [
@@ -50,46 +48,31 @@ const MyWorks = () => {
     ? config.projects.findIndex((project) => project.id === selectedProject.id)
     : -1;
 
+  /** Thumbnail of a project in the grid — the modal image flies from / back to it. */
+  const cardImageFor = (id: number) =>
+    document.querySelector<HTMLElement>(`[data-project-id="${id}"] .myworks-card-image`);
+
+  const openProject = useCallback((project: any, origin: HTMLElement | null) => {
+    setFeaturedProject(project);
+    setSelected({ project, origin });
+  }, []);
+
+  const closeProject = useCallback(() => setSelected(null), []);
+
   const selectAdjacentProject = (direction: -1 | 1) => {
     if (selectedIndex === -1) return;
     const nextIndex =
       (selectedIndex + direction + config.projects.length) %
       config.projects.length;
-    setSelectedProject(config.projects[nextIndex]);
-    setFeaturedProject(config.projects[nextIndex]);
+    const next = config.projects[nextIndex];
+    openProject(next, cardImageFor(next.id));
   };
 
   const chooseRandomProject = () => {
     const pool = filteredProjects.length ? filteredProjects : config.projects;
     const randomProject = pool[Math.floor(Math.random() * pool.length)];
-    setFeaturedProject(randomProject);
-    setSelectedProject(randomProject);
+    openProject(randomProject, cardImageFor(randomProject.id));
   };
-
-  /* ── Cinematic particle-dissolve click handler ── */
-  const handleCardClick = useCallback(
-    (project: any, cardElement: HTMLElement) => {
-      if (animatingRef.current) return;
-      animatingRef.current = true;
-      setFeaturedProject(project);
-
-      const rect = cardElement.getBoundingClientRect();
-
-      // Fade the card out while particles take over
-      cardElement.style.transition = "opacity 0.25s ease-out";
-      cardElement.style.opacity = "0";
-
-      runParticleTransition(rect, project.image, () => {
-        // Restore card and open modal (canvas fades on top)
-        cardElement.style.transition = "";
-        cardElement.style.opacity = "";
-        animatingRef.current = false;
-        setSkipIntroAnim(true);
-        setSelectedProject(project);
-      });
-    },
-    []
-  );
 
   return (
     <div className="myworks-page">
@@ -173,7 +156,9 @@ const MyWorks = () => {
               <button
                 type="button"
                 className="myworks-primary-action"
-                onClick={() => setSelectedProject(featuredProject)}
+                onClick={() =>
+                  openProject(featuredProject, document.querySelector<HTMLElement>(".myworks-featured-image"))
+                }
               >
                 Inspect project
               </button>
@@ -192,7 +177,7 @@ const MyWorks = () => {
           <button
             type="button"
             className="myworks-featured-image"
-            onClick={() => setSelectedProject(featuredProject)}
+            onClick={(e) => openProject(featuredProject, e.currentTarget)}
             aria-label={`Inspect ${featuredProject.title}`}
           >
             <img src={featuredProject.image} alt="" loading="lazy" decoding="async" />
@@ -207,18 +192,16 @@ const MyWorks = () => {
             className="myworks-card"
             key={project.id}
             data-cursor="disable"
+            data-project-id={project.id}
             onMouseEnter={() => setFeaturedProject(project)}
-            onClick={(e) => {
-              const card = e.currentTarget as HTMLElement;
-              handleCardClick(project, card);
-            }}
+            onClick={(e) => openProject(project, e.currentTarget.querySelector<HTMLElement>(".myworks-card-image"))}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                const card = event.currentTarget as HTMLElement;
-                handleCardClick(project, card);
+                openProject(project, event.currentTarget.querySelector<HTMLElement>(".myworks-card-image"));
               }
             }}
+            aria-label={`Open ${project.title}`}
             role="button"
             tabIndex={0}
           >
@@ -257,10 +240,10 @@ const MyWorks = () => {
 
       <ProjectModal
         project={selectedProject}
-        onClose={() => { setSelectedProject(null); setSkipIntroAnim(false); }}
+        originEl={selected?.origin}
+        onClose={closeProject}
         onPrevious={() => selectAdjacentProject(-1)}
         onNext={() => selectAdjacentProject(1)}
-        skipIntroAnim={skipIntroAnim}
       />
     </div>
   );

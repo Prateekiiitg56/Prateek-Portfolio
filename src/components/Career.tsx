@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { animate, stagger } from "animejs";
 import "./styles/Career.css";
 import { config } from "../config";
+import { ChapterTag } from "./StoryProgress";
 
 const getDisplayYear = (period: string) => {
   if (period.includes("Present")) return "NOW";
@@ -44,6 +45,7 @@ const Career = () => {
   return (
     <div className="career-section section-container" ref={sectionRef}>
       <div className="career-container">
+        <ChapterTag index={3} center />
         <h2>
           My career <span>&</span>
           <br /> experience

@@ -1,10 +1,12 @@
 import "./styles/About.css";
 import { config } from "../config";
+import { ChapterTag } from "./StoryProgress";
 
 const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-me">
+        <ChapterTag index={1} />
         <h3 className="title">{config.about.title}</h3>
         <p className="para">
           {config.about.description}

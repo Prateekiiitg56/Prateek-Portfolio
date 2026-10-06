@@ -16,9 +16,9 @@ const Loading = ({ percent }: { percent: number }) => {
         setLoaded(true);
         const timer2 = setTimeout(() => {
           setIsLoaded(true);
-        }, 1000);
+        }, 700);
         return () => clearTimeout(timer2);
-      }, 600);
+      }, 300);
       return () => clearTimeout(timer1);
     }
   }, [percent]);
@@ -29,7 +29,7 @@ const Loading = ({ percent }: { percent: number }) => {
         setClicked(true);
         // On touch devices auto-advance immediately - no mouse click needed
         const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-        const delay = isTouchDevice ? 300 : 900;
+        const delay = isTouchDevice ? 300 : 700;
         setTimeout(() => {
           if (module.initialFX) {
             module.initialFX();
@@ -63,9 +63,9 @@ const Loading = ({ percent }: { percent: number }) => {
     <>
       <div className="loading-header">
         <a href="/#" className="loader-title" data-cursor="disable">
-          Logo
+          Prateek
         </a>
-        <div className={`loaderGame ${clicked && "loader-out"}`}>
+        <div className={`loaderGame ${clicked ? "loader-out" : ""}`}>
           <div className="loaderGame-container">
             <div className="loaderGame-in">
               {[...Array(27)].map((_, index) => (
@@ -84,13 +84,13 @@ const Loading = ({ percent }: { percent: number }) => {
           </Marquee>
         </div>
         <div
-          className={`loading-wrap ${clicked && "loading-clicked"}`}
+          className={`loading-wrap ${clicked ? "loading-clicked" : ""}`}
           onMouseMove={(e) => handleMouseMove(e)}
           onTouchStart={(e) => handleTouch(e)}
           onTouchMove={(e) => handleTouch(e)}
         >
           <div className="loading-hover"></div>
-          <div className={`loading-button ${loaded && "loading-complete"}`}>
+          <div className={`loading-button ${loaded ? "loading-complete" : ""}`}>
             <div className="loading-container">
               <div className="loading-content">
                 <div className="loading-content-in">
@@ -141,5 +141,9 @@ export const setProgress = (setLoading: (value: number) => void) => {
       }, 2);
     });
   }
-  return { loaded, percent, clear };
+  /** Stop driving the bar (component unmounted) without completing it. */
+  function stop() {
+    clearInterval(interval);
+  }
+  return { loaded, percent, clear, stop };
 };

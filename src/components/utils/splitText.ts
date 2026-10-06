@@ -75,5 +75,12 @@ export default function setSplitText() {
     );
   });
 
-  ScrollTrigger.addEventListener("refresh", () => setSplitText());
+}
+
+// Re-split after ScrollTrigger refreshes (fonts/layout changed). Registered once.
+let refreshHooked = false;
+export function hookSplitTextRefresh() {
+  if (refreshHooked) return;
+  refreshHooked = true;
+  ScrollTrigger.addEventListener("refresh", setSplitText);
 }

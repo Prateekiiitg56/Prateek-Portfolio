@@ -1,6 +1,7 @@
 import { MdArrowOutward, MdCopyright } from "react-icons/md";
 import "./styles/Contact.css";
 import { config } from "../config";
+import { ChapterTag } from "./StoryProgress";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animate } from "animejs";
@@ -77,6 +78,7 @@ const Contact = () => {
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
+        <ChapterTag index={6} />
         <h3>{config.developer.fullName}</h3>
         <div className="contact-flex">
           <div className="contact-box">

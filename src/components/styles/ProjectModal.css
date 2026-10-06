@@ -14,13 +14,13 @@
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-  animation: modalFadeIn 0.25s ease-out forwards;
+  overscroll-behavior: contain;
 }
 
 /* Modal Window Card */
 .project-modal-card {
   position: relative;
-  background: #110e15;
+  background: var(--surfaceColor);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   width: 100%;
@@ -29,9 +29,9 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(194, 164, 255, 0.12);
-  animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  color: #fff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(124, 108, 255, 0.18);
+  color: var(--textColor);
+  will-change: transform, opacity;
   box-sizing: border-box;
 }
 
@@ -80,7 +80,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   color: #fff;
-  background: rgba(17, 14, 21, 0.85);
+  background: rgba(17, 24, 42, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   cursor: pointer;
@@ -148,7 +148,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(194, 164, 255, 0.1);
+  background: rgba(124, 108, 255, 0.1);
   color: var(--accentColor, #63e6ff);
   font-size: 10px;
   font-weight: 500;
@@ -156,7 +156,7 @@
   border-radius: 20px;
   width: fit-content;
   margin-bottom: 8px;
-  border: 1px solid rgba(194, 164, 255, 0.2);
+  border: 1px solid rgba(124, 108, 255, 0.2);
 }
 
 .project-modal-title {
@@ -200,8 +200,7 @@
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
-  color: #e0e0e0;
-  opacity: 0;
+  color: var(--textColor);
 }
 
 .project-modal-actions {
@@ -249,7 +248,7 @@
 
 .btn-deploy:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(194, 164, 255, 0.4);
+  box-shadow: 0 6px 20px var(--glowColor);
   color: #000000;
 }
 
@@ -263,43 +262,39 @@
 .live-dot {
   width: 8px;
   height: 8px;
-  background: #00ff88;
+  background: #0b1020;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00ff88;
+  box-shadow: 0 0 0 2px rgba(11, 16, 32, 0.25);
+  animation: liveDot 1.6s ease-in-out infinite;
 }
 
 .pulse-dot {
   width: 8px;
   height: 8px;
-  background: #ffb703;
+  background: var(--accentTertiary);
   border-radius: 50%;
   display: inline-block;
 }
 
-/* Modal Animations */
-@keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Shared-element flight between a project thumbnail and the modal image */
+.project-modal-ghost {
+  position: fixed;
+  z-index: 100001;
+  object-fit: cover;
+  pointer-events: none;
+  will-change: left, top, width, height;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
-@keyframes modalPopIn {
-  from {
-    opacity: 0;
-    transform: scale(0.92) translateY(10px);
+@keyframes liveDot {
+  50% {
+    box-shadow: 0 0 0 5px rgba(11, 16, 32, 0);
   }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
 }
 
-/* Skip open animations when mounted behind particle canvas */
-.project-modal-backdrop.no-intro-anim {
-  animation: none;
-}
-
-.no-intro-anim .project-modal-card {
-  animation: none;
+html.modal-open,
+html.modal-open body {
+  overflow: hidden !important;
 }
 
 /* Mobile Responsiveness */
@@ -331,7 +326,7 @@
     width: 34px;
     height: 34px;
     font-size: 18px;
-    background: rgba(11, 8, 12, 0.75);
+    background: rgba(7, 10, 20, 0.75);
     backdrop-filter: blur(8px);
   }
 
