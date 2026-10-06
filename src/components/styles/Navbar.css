@@ -28,7 +28,7 @@
 .header ul li {
   margin-left: 0px;
   letter-spacing: 0.8px;
-  color: #ccc;
+  color: var(--textColor);
   font-weight: 600;
   cursor: pointer;
 }
@@ -59,10 +59,13 @@
     flex-direction: row;
     align-items: center;
     font-size: 14px;
+    /* sit next to the resume button so the centred email never overlaps */
+    margin-left: auto;
+    margin-right: 36px;
   }
 
   .header ul li {
-    color: #eae5ec;
+    color: var(--textColor);
   }
 
   .navbar-title {
@@ -82,7 +85,7 @@
   }
 
   .header ul {
-    column-gap: 80px;
+    column-gap: 48px;
     font-size: 16px;
   }
 
@@ -100,8 +103,8 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #eae5ec;
-  border: 1.5px solid rgba(234, 229, 236, 0.4);
+  color: var(--textColor);
+  border: 1.5px solid rgba(241, 245, 255, 0.4);
   padding: 6px 14px;
   border-radius: 20px;
   text-decoration: none;
@@ -111,9 +114,9 @@
 }
 
 .navbar-resume-btn:hover {
-  background: rgba(234, 229, 236, 0.12);
-  border-color: #eae5ec;
-  box-shadow: 0 0 10px rgba(234, 229, 236, 0.2);
+  background: rgba(241, 245, 255, 0.12);
+  border-color: var(--textColor);
+  box-shadow: 0 0 10px rgba(241, 245, 255, 0.2);
   color: #fff;
 }
 

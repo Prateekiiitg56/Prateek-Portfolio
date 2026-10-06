@@ -28,8 +28,8 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     // On mobile, the 3D scene never loads so setProgress is never called.
     // Drive the progress bar ourselves so the loading animation plays.
-    const isMobile = window.innerWidth <= 768;
-    if (!isMobile) return;
+    const hasScene = window.innerWidth > 1024;
+    if (hasScene) return;
 
     let pct = 0;
     const interval = setInterval(() => {

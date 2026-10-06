@@ -7,13 +7,19 @@ import { animate } from "animejs";
 import { useEffect, useState, useCallback } from "react";
 import { config } from "../config";
 import { Link } from "react-router-dom";
+import { ChapterTag } from "./StoryProgress";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MOBILE_INITIAL_COUNT = 3;
 
+type Project = (typeof config.projects)[number];
+
 const Work = () => {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selected, setSelected] = useState<{ project: Project; origin: HTMLElement | null } | null>(null);
+  const openProject = (project: Project, box: HTMLElement) =>
+    setSelected({ project, origin: box.querySelector<HTMLElement>(".work-image-in") });
+  const closeProject = useCallback(() => setSelected(null), []);
   const [showAll, setShowAll] = useState(false);
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
@@ -56,7 +62,7 @@ const Work = () => {
       return Math.max(0, totalChildWidth - viewportWidth + 40);
     }
 
-    let timeline = gsap.timeline({
+    const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".work-section",
         start: "top top",
@@ -90,6 +96,7 @@ const Work = () => {
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
+        <ChapterTag index={4} />
         <h2>
           My <span>Work</span>
         </h2>
@@ -100,7 +107,16 @@ const Work = () => {
             <div
               className="work-box"
               key={project.id}
-              onClick={() => setSelectedProject(project)}
+              onClick={(e) => openProject(project, e.currentTarget)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openProject(project, e.currentTarget);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${project.title}`}
               onMouseEnter={handleBoxEnter}
               onMouseLeave={handleBoxLeave}
               data-cursor="disable"
@@ -118,7 +134,7 @@ const Work = () => {
                 <h4>Tools and features</h4>
                 <p>{project.technologies}</p>
               </div>
-              <WorkImage image={project.image} alt={project.title} link={(project as any).link} />
+              <WorkImage image={project.image} alt={project.title} link={project.link} />
             </div>
           ))}
           {/* Mobile: Show More / Show Less toggle */}
@@ -175,8 +191,9 @@ const Work = () => {
       </div>
 
       <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        project={selected?.project ?? null}
+        originEl={selected?.origin}
+        onClose={closeProject}
       />
     </div>
   );

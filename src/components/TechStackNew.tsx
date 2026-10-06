@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { animate, stagger } from "animejs";
 import "./styles/TechStackNew.css";
+import { ChapterTag } from "./StoryProgress";
 
 interface TechItem {
   name: string;
@@ -77,6 +78,29 @@ const TechStackNew = () => {
   const pyramidRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
+  // Background video only downloads/plays while the section is on screen
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (video.preload !== "auto") {
+            video.preload = "auto";
+            video.load();
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   // Scroll reveal: fade + scale from center-out stagger
   useEffect(() => {
     const el = pyramidRef.current;
@@ -127,10 +151,12 @@ const TechStackNew = () => {
       {/* Video Background */}
       <div className="techstack-video-container">
         <video
-          autoPlay
+          ref={videoRef}
           loop
           muted
           playsInline
+          preload="none"
+          aria-hidden="true"
           className="techstack-video"
         >
           <source src="/video/video.webm" type="video/webm" />
@@ -141,6 +167,7 @@ const TechStackNew = () => {
 
       {/* Content */}
       <div className="techstack-content">
+        <ChapterTag index={5} center />
         <h2>Tech Stack</h2>
         
         <div className="techstack-pyramid" ref={pyramidRef}>
@@ -158,7 +185,7 @@ const TechStackNew = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <img src={tech.icon} alt={tech.name} />
+                  <img src={tech.icon} alt="" loading="lazy" decoding="async" width="40" height="40" />
                   <span>{tech.name}</span>
                 </a>
               ))}

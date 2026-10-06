@@ -8,11 +8,6 @@ export function initialFX() {
     lenis.start();
   }
   document.getElementsByTagName("main")[0].classList.add("main-active");
-  gsap.to("body", {
-    backgroundColor: "#0b080c",
-    duration: 0.5,
-    delay: 1,
-  });
 
   const selectors = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"];
   const elements = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
@@ -77,61 +72,27 @@ export function initialFX() {
   var landingText4 = new TextSplitter(".landing-h2-1", TextProps);
   var landingText5 = new TextSplitter(".landing-h2-2", TextProps);
 
-  LoopText(landingText2, landingText3);
-  LoopText(landingText4, landingText5);
+  // phones hide the alternate words (Landing.css); swapping would leave the line empty
+  const alternatesShown = getComputedStyle(document.querySelector(".landing-h2-2")!).display !== "none";
+  if (alternatesShown) {
+    LoopText(landingText2, landingText3);
+    LoopText(landingText4, landingText5);
+  }
 }
 
-function LoopText(Text1: TextSplitter, Text2: TextSplitter) {
-  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-  const delay = 4;
-  const delay2 = delay * 2 + 1;
-
-  tl.fromTo(
-    Text2.chars,
-    { opacity: 0, y: 80 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.1,
-      delay: delay,
-    },
-    0
-  )
-    .fromTo(
-      Text1.chars,
-      { y: 80 },
-      {
-        duration: 1.2,
-        ease: "power3.inOut",
-        y: 0,
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    )
-    .fromTo(
-      Text1.chars,
-      { y: 0 },
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay,
-      },
-      0
-    )
-    .to(
-      Text2.chars,
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    );
+/** Endlessly swaps two stacked words: the current one slides up and out, the next slides in. */
+function LoopText(first: TextSplitter, second: TextSplitter) {
+  gsap.set(second.chars, { yPercent: 100, opacity: 0 });
+  const tl = gsap.timeline({ repeat: -1, delay: 1.5 });
+  const swap = (out: TextSplitter, next: TextSplitter) =>
+    tl
+      .to(out.chars, { yPercent: -100, opacity: 0, duration: 0.8, ease: "power3.inOut", stagger: 0.03 }, "+=2.6")
+      .fromTo(
+        next.chars,
+        { yPercent: 100, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 0.8, ease: "power3.inOut", stagger: 0.03, immediateRender: false },
+        "<0.15"
+      );
+  swap(first, second);
+  swap(second, first);
 }

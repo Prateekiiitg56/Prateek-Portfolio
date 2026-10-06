@@ -2,8 +2,8 @@
   position: fixed;
   width: 100vw;
   height: var(--vh);
-  /* background-image: linear-gradient(#cbb1ff, #d8c4ff); */
-  background-color: #eae5ec;
+  background-color: var(--accentColor);
+  background-image: linear-gradient(120deg, #63e6ff 0%, #7c6cff 55%, #d946ef 100%);
   z-index: 999999999;
   display: flex;
   place-items: center;
@@ -12,7 +12,7 @@
 .loading-button {
   padding: 20px 50px;
   border-radius: 100px;
-  background-color: #000;
+  background-color: var(--backgroundColor);
   overflow: hidden;
   font-size: 18px;
   font-weight: 500;
@@ -48,7 +48,7 @@
   min-width: 0px;
   min-height: 0px;
   border-radius: 100px;
-  background-color: #000;
+  background-color: var(--backgroundColor);
   overflow: hidden;
   transition: 0.8s ease-in-out;
   transition-delay: 0.2s;
@@ -92,7 +92,7 @@
 }
 .loading-content {
   position: relative;
-  background-color: #000;
+  background-color: var(--backgroundColor);
   width: 100%;
   overflow: hidden;
   transition: 0.6s;

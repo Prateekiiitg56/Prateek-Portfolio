@@ -17,7 +17,7 @@
   line-height: 70px;
   font-weight: 400;
   text-align: center;
-  color: #8b7dff;
+  color: var(--accentSecondary);
   margin-top: 50px;
   margin-bottom: 90px;
 }
@@ -104,8 +104,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 8px #d097ff,
-    0px 0px 110px 20px #f2c0ff;
+  box-shadow: 0px 0px 5px 2px #63e6ff, 0px 0px 15px 8px #7c6cff,
+    0px 0px 110px 20px rgba(99, 230, 255, 0.35);
   animation: timeline 0.8s linear infinite forwards;
 }
 
@@ -116,7 +116,7 @@
   50%,
   70%,
   90% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
+    box-shadow: 0px 0px 5px 2px #63e6ff;
   }
 
   10%,
@@ -125,19 +125,19 @@
   100%,
   64%,
   80% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
+    box-shadow: 0px 0px 5px 2px #63e6ff, 0px 0px 15px 5px #7c6cff,
+      0px 0px 110px 20px rgba(99, 230, 255, 0.35);
   }
 }
 
 @keyframes timeline2 {
   0% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
+    box-shadow: 0px 0px 5px 2px #63e6ff;
   }
 
   100% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
+    box-shadow: 0px 0px 5px 2px #63e6ff, 0px 0px 15px 5px #7c6cff,
+      0px 0px 110px 20px rgba(99, 230, 255, 0.35);
   }
 }
 

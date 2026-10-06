@@ -1,0 +1,191 @@
+/* ---------- chapter kicker ---------- */
+.chapter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.chapter-tag-center {
+  display: flex;
+  justify-content: center;
+}
+
+.chapter-tag-num {
+  color: var(--accentColor);
+  font-weight: 600;
+}
+
+.chapter-tag-line {
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accentColor), var(--accentTertiary));
+}
+
+.chapter-tag-title {
+  color: var(--mutedColor);
+}
+
+/* ---------- side rail ---------- */
+.story-rail {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 98;
+  display: none;
+  opacity: 0;
+  animation: storyRailIn 0.8s 0.4s ease-out forwards;
+}
+
+@keyframes storyRailIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.story-rail-track {
+  position: absolute;
+  right: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(241, 245, 255, 0.12);
+}
+
+.story-rail-fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: top;
+  background: linear-gradient(to bottom, var(--accentColor), var(--accentSecondary), var(--accentTertiary));
+  box-shadow: 0 0 10px var(--glowColor);
+}
+
+.story-rail ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.story-rail button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+}
+
+.story-rail button:focus-visible {
+  outline: 1px solid var(--accentColor);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.story-rail-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--backgroundColor);
+  border: 1px solid rgba(241, 245, 255, 0.35);
+  transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  flex-shrink: 0;
+}
+
+.story-rail-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--textColor);
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.story-rail-label small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+}
+
+.story-rail li.is-read .story-rail-dot {
+  background: var(--accentSecondary);
+  border-color: var(--accentSecondary);
+}
+
+.story-rail li.is-active .story-rail-dot {
+  background: var(--accentColor);
+  border-color: var(--accentColor);
+  transform: scale(1.35);
+  box-shadow: 0 0 12px var(--accentColor);
+}
+
+.story-rail button:hover .story-rail-label,
+.story-rail button:focus-visible .story-rail-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.story-rail > * {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* stay out of the hero; appear once the story starts */
+.story-rail.is-prologue > * {
+  opacity: 0;
+  transform: translateX(12px);
+  pointer-events: none;
+}
+
+@media (min-width: 1025px) {
+  .story-rail {
+    display: block;
+  }
+}
+
+/* ---------- character speech bubble + hover ghost ---------- */
+.character-bubble {
+  position: absolute;
+  z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  padding: 10px 16px;
+  border-radius: 16px 16px 16px 4px;
+  background: rgba(17, 24, 42, 0.82);
+  border: 1px solid rgba(99, 230, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 24px var(--glowColor);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--textColor);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  transform-origin: bottom left;
+}
+
+.character-model canvas {
+  transition: opacity 0.45s ease;
+}
+
+.character-model canvas.is-ghost {
+  opacity: 0.22;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-rail {
+    animation: none;
+    opacity: 1;
+  }
+}
