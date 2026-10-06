@@ -38,7 +38,7 @@ const Loading = ({ percent }: { percent: number }) => {
         }, delay);
       }
     });
-  }, [isLoaded]);
+  }, [isLoaded, setIsLoading]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { currentTarget: target } = e;
